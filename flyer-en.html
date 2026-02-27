@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Otachimisaki Park — 2026 Event Guide | Ashikita, Kumamoto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ocean-dark: #023E8A;
+      --ocean:      #0077B6;
+      --ocean-mid:  #0096C7;
+      --sky:        #ADE8F4;
+      --sand:       #F4E4C1;
+      --sand-dark:  #E9C46A;
+      --warm:       #F4A261;
+      --sunset:     #E76F51;
+      --white:      #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #c8d4e3;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 16px 48px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ocean-dark);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      align-self: flex-start;
+      background: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    /* ── FLYER ── */
+    .flyer {
+      width: 100%;
+      max-width: 580px;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.24);
+      overflow: hidden;
+    }
+
+    /* ── HERO ── */
+    .flyer-hero {
+      position: relative;
+      height: 360px;
+      background:
+        linear-gradient(to bottom, rgba(2,62,138,0.12) 0%, rgba(0,0,0,0.04) 35%, rgba(0,0,0,0.75) 100%),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      color: white;
+    }
+    .hero-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 50px;
+      padding: 5px 14px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--sky);
+      margin-bottom: 14px;
+      align-self: flex-start;
+      backdrop-filter: blur(6px);
+    }
+    .flyer-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 6vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+    }
+    .flyer-hero h1 span { color: var(--sand-dark); }
+    .flyer-hero p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+    .free-badge {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      background: var(--sunset);
+      color: white;
+      font-weight: 900;
+      font-size: 0.75rem;
+      padding: 7px 14px;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(231,111,81,0.55);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* ── BODY ── */
+    .flyer-body { padding: 30px 26px 26px; }
+
+    /* ── INFO STRIP ── */
+    .info-strip {
+      background: linear-gradient(135deg, var(--ocean-dark) 0%, var(--ocean-mid) 100%);
+      border-radius: 14px;
+      padding: 18px 22px;
+      color: white;
+      margin-bottom: 26px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+    .info-strip .is-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .info-strip .is-main span { color: var(--sand-dark); }
+    .info-strip .is-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.72);
+    }
+    .info-strip .is-price {
+      text-align: center;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 10px;
+      padding: 10px 16px;
+    }
+    .info-strip .is-price .price-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--sand-dark);
+      display: block;
+      line-height: 1;
+    }
+    .info-strip .is-price .price-label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── SECTION LABELS ── */
+    .sec-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      color: var(--ocean-mid);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ocean-dark);
+      margin-bottom: 14px;
+    }
+
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .photo-card {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      height: 90px;
+    }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 50%);
+    }
+    .photo-card .pc-label {
+      position: absolute;
+      bottom: 7px;
+      left: 8px;
+      z-index: 2;
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+
+    /* ── SEASON TABLE ── */
+    .season-list { margin-bottom: 24px; }
+    .season-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 11px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .season-item:last-child { border-bottom: none; }
+    .s-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .s-spring { background: #fce4ec; }
+    .s-summer { background: #e3f2fd; }
+    .s-autumn { background: #fff3e0; }
+    .s-winter { background: #f1f8e9; }
+    .s-info { flex: 1; }
+    .s-info .s-name { font-weight: 700; font-size: 0.85rem; color: var(--ocean-dark); margin-bottom: 2px; }
+    .s-info .s-desc { font-size: 0.74rem; color: #666; line-height: 1.5; }
+    .s-months { font-size: 0.66rem; color: #bbb; white-space: nowrap; padding-top: 4px; }
+
+    /* ── HIGHLIGHTS ── */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .hl-card {
+      background: #f7fbff;
+      border: 1px solid #d0e8f5;
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hl-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .hl-text { font-size: 0.74rem; color: var(--ocean-dark); font-weight: 600; line-height: 1.35; }
+
+    /* ── ACCESS ── */
+    .access-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, var(--sand) 100%);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 22px;
+    }
+    .access-box .ac-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--ocean-mid);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .access-box .ac-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ocean-dark);
+      margin-bottom: 6px;
+    }
+    .access-box .ac-detail {
+      font-size: 0.76rem;
+      color: #555;
+      line-height: 1.65;
+    }
+    .access-box .ac-detail strong { color: var(--ocean-dark); }
+
+    /* ── FOOTER ── */
+    .flyer-footer {
+      border-top: 2px solid #f0f0f0;
+      padding: 18px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .flyer-footer .ff-org {
+      font-size: 0.72rem;
+      color: #aaa;
+      line-height: 1.6;
+    }
+    .flyer-footer .ff-url { text-align: right; }
+    .flyer-footer .ff-url .url-label { font-size: 0.6rem; color: #ccc; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .flyer-footer .ff-url a { font-size: 0.72rem; color: var(--ocean); text-decoration: none; font-weight: 700; }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .back-link { display: none; }
+      .flyer { max-width: 100%; box-shadow: none; }
+    }
+    @media (max-width: 480px) {
+      .photo-grid { grid-template-columns: repeat(3, 1fr); }
+      .highlights { grid-template-columns: 1fr; }
+      .info-strip { grid-template-columns: 1fr; }
+      .info-strip .is-price { justify-self: start; }
+      .flyer-footer { flex-direction: column; align-items: flex-start; }
+      .flyer-footer .ff-url { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-link">← Back to All Materials</a>
+
+  <div class="flyer">
+
+    <!-- HERO -->
+    <div class="flyer-hero">
+      <div class="free-badge">FREE<br />Entry</div>
+      <div class="hero-location">Ashikita, Kumamoto — Kyushu, Japan</div>
+      <h1>Sea, Nature &<br /><span>Local Culture.</span></h1>
+      <p>Monthly events every 2nd Saturday — Otachimisaki Park</p>
+    </div>
+
+    <!-- BODY -->
+    <div class="flyer-body">
+
+      <!-- INFO STRIP -->
+      <div class="info-strip">
+        <div>
+          <div class="is-main">Every <span>2nd Saturday</span> of the Month</div>
+          <div class="is-sub">April 2026 — March 2027 &nbsp;|&nbsp; 12 months of events</div>
+        </div>
+        <div class="is-price">
+          <span class="price-num">¥0</span>
+          <div class="price-label">Most events free</div>
+        </div>
+      </div>
+
+      <!-- PHOTO GRID -->
+      <div class="sec-label">HIGHLIGHTS</div>
+      <div class="sec-title">What's Waiting for You</div>
+      <div class="photo-grid">
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Ocean view" loading="lazy" />
+          <div class="pc-label">Ocean View</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&q=80" alt="Camping" loading="lazy" />
+          <div class="pc-label">Camping</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=400&q=80" alt="Onsen" loading="lazy" />
+          <div class="pc-label">Onsen</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&q=80" alt="Local Food" loading="lazy" />
+          <div class="pc-label">Local Food</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&q=80" alt="Festival" loading="lazy" />
+          <div class="pc-label">Festivals</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400&q=80" alt="Beach" loading="lazy" />
+          <div class="pc-label">Beach</div>
+        </div>
+      </div>
+
+      <!-- SEASON EVENTS -->
+      <div class="sec-label">SEASON EVENTS</div>
+      <div class="sec-title">Something Every Season</div>
+      <div class="season-list">
+        <div class="season-item">
+          <div class="s-icon s-spring">🌸</div>
+          <div class="s-info">
+            <div class="s-name">Spring — Cherry Blossoms &amp; Marine Activities</div>
+            <div class="s-desc">Hanami BBQ, tidal flat exploration, spring festival (April)</div>
+          </div>
+          <div class="s-months">Apr–Jun</div>
+        </div>
+        <div class="season-item">
+          <div class="s-icon s-summer">🌊</div>
+          <div class="s-info">
+            <div class="s-name">Summer — Sea Sports &amp; Beach Fest</div>
+            <div class="s-desc">Snorkeling, sea kayaking, fireworks, beach party (July)</div>
+          </div>
+          <div class="s-months">Jul–Sep</div>
+        </div>
+        <div class="season-item">
+          <div class="s-icon s-autumn">🍊</div>
+          <div class="s-info">
+            <div class="s-name">Autumn — Harvest &amp; Food Festival</div>
+            <div class="s-desc">Citrus picking, local food market, Ashikita Autumn Fest (Nov)</div>
+          </div>
+          <div class="s-months">Oct–Dec</div>
+        </div>
+        <div class="season-item">
+          <div class="s-icon s-winter">🔥</div>
+          <div class="s-info">
+            <div class="s-name">Winter — Bonfire Night &amp; New Year Events</div>
+            <div class="s-desc">New Year bonfire festival (Jan), Setsubun bean-throwing (Feb)</div>
+          </div>
+          <div class="s-months">Jan–Mar</div>
+        </div>
+      </div>
+
+      <!-- HIGHLIGHTS -->
+      <div class="highlights">
+        <div class="hl-card"><div class="hl-icon">🎟</div><div class="hl-text">Free or low-cost<br />entry to most events</div></div>
+        <div class="hl-card"><div class="hl-icon">👨‍👩‍👧</div><div class="hl-text">Family-friendly<br />activities all year</div></div>
+        <div class="hl-card"><div class="hl-icon">🐟</div><div class="hl-text">Fresh local seafood<br />&amp; Kumamoto produce</div></div>
+        <div class="hl-card"><div class="hl-icon">♨️</div><div class="hl-text">Onsen hot spring<br />open year-round</div></div>
+      </div>
+
+      <!-- ACCESS -->
+      <div class="access-box">
+        <div class="ac-title">How to Get There</div>
+        <div class="ac-name">Otachimisaki Park</div>
+        <div class="ac-detail">
+          <strong>Address:</strong> Oura, Ashikita-cho, Ashikita-gun, Kumamoto 869-5441<br />
+          <strong>Train:</strong> Hisatsu Orange Railway "Saiki Station" → 10 min by car<br />
+          <strong>By Car:</strong> Kumamoto IC → approx. 60 min via Route 3 South<br />
+          <strong>Nearest City:</strong> Kumamoto (70 km) · Kagoshima (90 km)
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="flyer-footer">
+        <div class="ff-org">
+          Organized by: Ashikita Town<br />
+          Venue: Otachimisaki Park
+        </div>
+        <div class="ff-url">
+          <div class="url-label">FULL CALENDAR</div>
+          <a href="calendar.html" target="_blank" rel="noopener">soulsyncs.github.io/<br />otachimisaki-events/calendar.html</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

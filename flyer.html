@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>御立岬公園 年間イベントチラシ 2026</title>
+  <title>御立岬公園 イベントチラシ 2026 | 芦北の海へ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet" />
@@ -21,20 +21,16 @@
       --sunset:     #E76F51;
       --white:      #FFFFFF;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Noto Sans JP', sans-serif;
-      background: #dde3ec;
+      background: #d6dde8;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 32px 16px 48px;
+      padding: 28px 16px 48px;
     }
-
-    /* ── BACK LINK ── */
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -50,275 +46,282 @@
       border-radius: 50px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
-    .back-link:hover { background: var(--sky); }
 
-    /* ── FLYER WRAPPER ── */
+    /* ── FLYER ── */
     .flyer {
       width: 100%;
-      max-width: 600px;
+      max-width: 580px;
       background: white;
       border-radius: 4px;
       box-shadow: 0 8px 48px rgba(0,0,0,0.22);
       overflow: hidden;
     }
 
-    /* ── HERO SECTION ── */
+    /* ── HERO ── */
     .flyer-hero {
       position: relative;
-      height: 320px;
+      height: 340px;
       background:
-        linear-gradient(to bottom, rgba(2,62,138,0.72) 0%, rgba(0,119,182,0.48) 50%, rgba(0,0,0,0.65) 100%),
-        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85') center/cover no-repeat;
+        linear-gradient(to bottom, rgba(2,62,138,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.72) 100%),
+        url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=85') center/cover no-repeat;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      justify-content: flex-end;
+      padding: 28px;
       color: white;
-      padding: 32px 24px;
     }
-    .flyer-year-badge {
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.5);
-      backdrop-filter: blur(6px);
+    .hero-tag {
+      display: inline-block;
+      background: var(--sand-dark);
+      color: var(--ocean-dark);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 14px;
       border-radius: 50px;
-      padding: 5px 18px;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      color: var(--sky);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+      align-self: flex-start;
     }
     .flyer-hero h1 {
       font-family: 'Noto Serif JP', serif;
-      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
       font-weight: 900;
-      line-height: 1.3;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-      margin-bottom: 10px;
+      line-height: 1.2;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+      margin-bottom: 8px;
     }
-    .flyer-hero h1 span { color: var(--sand-dark); }
-    .flyer-hero p {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 0.05em;
+    .flyer-hero .sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.88);
       font-weight: 300;
-    }
-    .flyer-date-badge {
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--sand-dark);
-      color: var(--ocean-dark);
-      font-weight: 700;
-      font-size: 0.88rem;
-      padding: 8px 28px;
-      border-radius: 50px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-      white-space: nowrap;
       letter-spacing: 0.04em;
     }
-
-    /* ── MAIN BODY ── */
-    .flyer-body {
-      padding: 48px 28px 32px;
-    }
-
-    /* ── STATS ROW ── */
-    .flyer-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 32px;
+    .free-badge {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      background: var(--sunset);
+      color: white;
+      font-weight: 900;
+      font-size: 0.78rem;
+      padding: 6px 14px;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(231,111,81,0.5);
+      line-height: 1.3;
       text-align: center;
     }
-    .flyer-stat .num {
-      font-family: 'Noto Serif JP', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--ocean);
-      line-height: 1;
-    }
-    .flyer-stat .unit { font-size: 0.75rem; color: var(--ocean-mid); }
-    .flyer-stat .lbl { font-size: 0.65rem; color: #666; margin-top: 4px; line-height: 1.3; }
 
-    /* ── SECTION LABEL ── */
+    /* ── BODY ── */
+    .flyer-body { padding: 32px 26px 28px; }
+
+    /* ── DATE HIGHLIGHT ── */
+    .date-strip {
+      background: linear-gradient(135deg, var(--ocean-dark) 0%, var(--ocean-mid) 100%);
+      border-radius: 14px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      margin-bottom: 28px;
+      gap: 12px;
+    }
+    .date-strip .ds-main {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .date-strip .ds-main span { color: var(--sand-dark); }
+    .date-strip .ds-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
+    }
+    .date-strip .ds-free {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .date-strip .ds-free .price { font-size: 1.3rem; color: var(--sand-dark); font-family: 'Noto Serif JP', serif; display: block; line-height: 1; }
+
+    /* ── WHAT YOU CAN DO ── */
     .sec-label {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       letter-spacing: 0.2em;
       color: var(--ocean-mid);
       text-transform: uppercase;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .sec-title {
       font-family: 'Noto Serif JP', serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--ocean-dark);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    /* ── BIG EVENTS ── */
-    .big-events {
+    .activity-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 28px;
+      gap: 10px;
+      margin-bottom: 26px;
     }
-    .big-event-card {
+    .activity-card {
       border-radius: 12px;
       overflow: hidden;
       position: relative;
-      height: 110px;
+      height: 100px;
     }
-    .big-event-card img {
+    .activity-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .big-event-card::after {
+    .activity-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, transparent 55%);
     }
-    .big-event-card .be-label {
+    .activity-card .ac-label {
       position: absolute;
-      bottom: 10px;
-      left: 12px;
+      bottom: 8px;
+      left: 10px;
       z-index: 2;
       color: white;
-    }
-    .big-event-card .be-season {
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      opacity: 0.85;
-      margin-bottom: 2px;
-    }
-    .big-event-card .be-name {
+      font-weight: 700;
       font-size: 0.82rem;
-      font-weight: 700;
-      line-height: 1.2;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
     }
-    .big-event-card .be-badge {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      z-index: 2;
-      background: var(--sand-dark);
-      color: var(--ocean-dark);
-      font-size: 0.58rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 50px;
+    .activity-card .ac-sub {
+      font-size: 0.62rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-top: 1px;
     }
 
-    /* ── MONTHLY TABLE ── */
-    .monthly-section { margin-bottom: 28px; }
-    .monthly-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
+    /* ── SEASON EVENTS ── */
+    .season-events { margin-bottom: 26px; }
+    .season-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
     }
-    .month-chip {
-      border-radius: 8px;
-      padding: 10px 6px;
-      text-align: center;
-    }
-    .month-chip .mc-month {
-      font-size: 0.68rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .month-chip .mc-event {
-      font-size: 0.6rem;
-      color: #555;
-      line-height: 1.3;
-    }
-    /* Season colors for chips */
-    .mc-spring { background: #fff0f3; border: 1px solid #f9c6d0; }
-    .mc-spring .mc-month { color: #c2185b; }
-    .mc-summer { background: #e8f4fd; border: 1px solid #90caf9; }
-    .mc-summer .mc-month { color: #0288d1; }
-    .mc-autumn { background: #fff3e0; border: 1px solid #ffcc80; }
-    .mc-autumn .mc-month { color: #e65100; }
-    .mc-winter { background: #f0f4f8; border: 1px solid #b0bec5; }
-    .mc-winter .mc-month { color: #37474f; }
-
-    /* ── FREEMIUM STRIP ── */
-    .freemium-strip {
-      background: linear-gradient(135deg, var(--ocean-dark) 0%, var(--ocean-mid) 100%);
-      border-radius: 12px;
-      padding: 18px 20px;
+    .season-row:last-child { border-bottom: none; }
+    .season-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-      color: white;
-    }
-    .freemium-strip .fs-icon {
-      font-size: 2rem;
+      justify-content: center;
+      font-size: 1rem;
       flex-shrink: 0;
     }
-    .freemium-strip h4 {
-      font-size: 0.92rem;
+    .dot-spring { background: #fce4ec; }
+    .dot-summer { background: #e3f2fd; }
+    .dot-autumn { background: #fff3e0; }
+    .dot-winter { background: #f1f8e9; }
+    .season-info { flex: 1; }
+    .season-info .si-name {
       font-weight: 700;
-      margin-bottom: 4px;
+      font-size: 0.88rem;
+      color: var(--ocean-dark);
+      margin-bottom: 2px;
     }
-    .freemium-strip p {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.45;
+    .season-info .si-events {
+      font-size: 0.76rem;
+      color: #666;
+      line-height: 1.55;
+    }
+    .season-month {
+      font-size: 0.68rem;
+      color: #aaa;
+      white-space: nowrap;
+      padding-top: 4px;
     }
 
-    /* ── VENUE ── */
-    .venue-section {
-      display: flex;
+    /* ── HIGHLIGHTS ── */
+    .highlights {
+      background: linear-gradient(135deg, #f0f9ff 0%, var(--sand) 100%);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 26px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      margin-bottom: 28px;
     }
-    .venue-chip {
-      flex: 1;
-      background: var(--sand);
-      border-radius: 10px;
-      padding: 10px 8px;
-      text-align: center;
+    .hl-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .venue-chip .vc-icon { font-size: 1.2rem; margin-bottom: 4px; }
-    .venue-chip .vc-name { font-size: 0.68rem; font-weight: 700; color: var(--ocean-dark); }
+    .hl-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .hl-text { font-size: 0.78rem; color: var(--ocean-dark); font-weight: 500; line-height: 1.35; }
+
+    /* ── ACCESS ── */
+    .access-box {
+      border: 2px solid var(--sky);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 22px;
+    }
+    .access-box .ab-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--ocean-mid);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .access-box .ab-name {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--ocean-dark);
+      margin-bottom: 4px;
+    }
+    .access-box .ab-addr {
+      font-size: 0.76rem;
+      color: #666;
+      line-height: 1.6;
+    }
 
     /* ── FOOTER ── */
     .flyer-footer {
-      border-top: 2px solid var(--sand);
-      padding: 20px 0 0;
+      border-top: 2px solid #f0f0f0;
+      padding: 18px 0 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
-    .flyer-footer .ff-left h3 {
-      font-family: 'Noto Serif JP', serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--ocean-dark);
-      margin-bottom: 4px;
-    }
-    .flyer-footer .ff-left p {
-      font-size: 0.68rem;
-      color: #888;
+    .flyer-footer .ff-org {
+      font-size: 0.72rem;
+      color: #999;
+      line-height: 1.6;
     }
     .flyer-footer .ff-url {
       text-align: right;
     }
     .flyer-footer .ff-url .url-label {
       font-size: 0.6rem;
-      color: #999;
+      color: #bbb;
       letter-spacing: 0.1em;
       margin-bottom: 2px;
     }
     .flyer-footer .ff-url a {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--ocean);
       text-decoration: none;
       font-weight: 700;
@@ -333,12 +336,12 @@
 
     /* ── MOBILE ── */
     @media (max-width: 480px) {
-      .flyer-stats { grid-template-columns: repeat(2, 1fr); }
-      .flyer-stat .num { font-size: 1.5rem; }
-      .big-events { grid-template-columns: repeat(2, 1fr); }
-      .monthly-grid { grid-template-columns: repeat(4, 1fr); }
+      .activity-grid { grid-template-columns: repeat(2, 1fr); }
+      .highlights { grid-template-columns: 1fr; }
       .flyer-footer { flex-direction: column; align-items: flex-start; }
       .flyer-footer .ff-url { text-align: left; }
+      .date-strip { flex-direction: column; gap: 10px; }
+      .date-strip .ds-free { width: 100%; }
     }
   </style>
 </head>
@@ -350,130 +353,119 @@
 
     <!-- HERO -->
     <div class="flyer-hero">
-      <div class="flyer-year-badge">OTACHIMISAKI PARK — 2026 EVENT PLAN</div>
-      <h1>芦北の海で、<br /><span>毎月</span>会いましょう。</h1>
-      <p>御立岬公園 年間イベントカレンダー 2026年度版</p>
-      <div class="flyer-date-badge">毎月 第2土曜日 開催</div>
+      <div class="free-badge">入場<br />無料</div>
+      <div class="hero-tag">熊本県芦北町 — 御立岬公園</div>
+      <h1>週末は、<br />海へ出かけよう。</h1>
+      <p class="sub">毎月第2土曜日、御立岬公園でイベント開催</p>
     </div>
 
     <!-- BODY -->
     <div class="flyer-body">
 
-      <!-- STATS -->
-      <div class="flyer-stats">
-        <div class="flyer-stat">
-          <div class="num">12</div>
-          <div class="unit">ヶ月</div>
-          <div class="lbl">年間を通じた<br />定例開催</div>
-        </div>
-        <div class="flyer-stat">
-          <div class="num">36</div>
-          <div class="unit">本</div>
-          <div class="lbl">毎月3本の<br />企画案</div>
-        </div>
-        <div class="flyer-stat">
-          <div class="num">4</div>
-          <div class="unit">回</div>
-          <div class="lbl">季節の<br />大型フェス</div>
-        </div>
-        <div class="flyer-stat">
-          <div class="num">¥0</div>
-          <div class="unit">〜</div>
-          <div class="lbl">無料参加<br />イベント多数</div>
-        </div>
-      </div>
-
-      <!-- BIG EVENTS -->
-      <div class="sec-label">HIGHLIGHT</div>
-      <div class="sec-title">年4回の大型フェス</div>
-      <div class="big-events">
-        <div class="big-event-card">
-          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=600&q=80" alt="春フェス" loading="lazy" />
-          <div class="be-badge">4月</div>
-          <div class="be-label">
-            <div class="be-season">SPRING FEST</div>
-            <div class="be-name">芦北春まつり<br />御立岬フェス</div>
-          </div>
-        </div>
-        <div class="big-event-card">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="夏フェス" loading="lazy" />
-          <div class="be-badge">7月</div>
-          <div class="be-label">
-            <div class="be-season">SUMMER FEST</div>
-            <div class="be-name">海の日<br />ビーチフェスタ</div>
-          </div>
-        </div>
-        <div class="big-event-card">
-          <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=80" alt="秋フェス" loading="lazy" />
-          <div class="be-badge">11月</div>
-          <div class="be-label">
-            <div class="be-season">AUTUMN FEST</div>
-            <div class="be-name">芦北秋祭り<br />フードフェス</div>
-          </div>
-        </div>
-        <div class="big-event-card">
-          <img src="https://images.unsplash.com/photo-1416339442236-8ceb164046f8?w=600&q=80" alt="冬フェス" loading="lazy" />
-          <div class="be-badge">1月</div>
-          <div class="be-label">
-            <div class="be-season">WINTER FEST</div>
-            <div class="be-name">新春かがり火<br />もちつき祭り</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MONTHLY -->
-      <div class="monthly-section">
-        <div class="sec-label">SCHEDULE</div>
-        <div class="sec-title">毎月の定例イベント（抜粋）</div>
-        <div class="monthly-grid">
-          <div class="month-chip mc-spring"><div class="mc-month">4月</div><div class="mc-event">花見BBQ<br />海辺ピクニック</div></div>
-          <div class="month-chip mc-spring"><div class="mc-month">5月</div><div class="mc-event">GW磯遊び<br />家族釣り体験</div></div>
-          <div class="month-chip mc-spring"><div class="mc-month">6月</div><div class="mc-event">梅雨キャンプ<br />ナイトウォーク</div></div>
-          <div class="month-chip mc-summer"><div class="mc-month">7月</div><div class="mc-event">マリンスポーツ<br />夕焼けBBQ</div></div>
-          <div class="month-chip mc-summer"><div class="mc-month">8月</div><div class="mc-event">盆踊り<br />花火鑑賞</div></div>
-          <div class="month-chip mc-summer"><div class="mc-month">9月</div><div class="mc-event">シーカヤック<br />芋煮会</div></div>
-          <div class="month-chip mc-autumn"><div class="mc-month">10月</div><div class="mc-event">秋キャンプ<br />農業体験</div></div>
-          <div class="month-chip mc-autumn"><div class="mc-month">11月</div><div class="mc-event">みかん狩り<br />フードフェス</div></div>
-          <div class="month-chip mc-winter"><div class="mc-month">12月</div><div class="mc-event">焚き火夜会<br />冬イルミ</div></div>
-          <div class="month-chip mc-winter"><div class="mc-month">1月</div><div class="mc-event">初詣ウォーク<br />もちつき</div></div>
-          <div class="month-chip mc-winter"><div class="mc-month">2月</div><div class="mc-event">節分イベント<br />恵方巻づくり</div></div>
-          <div class="month-chip mc-spring"><div class="mc-month">3月</div><div class="mc-event">ひな祭り<br />春の足音祭</div></div>
-        </div>
-      </div>
-
-      <!-- FREEMIUM -->
-      <div class="freemium-strip">
-        <div class="fs-icon">🎟</div>
+      <!-- DATE -->
+      <div class="date-strip">
         <div>
-          <h4>「まず来てもらう」フリーミアム戦略</h4>
-          <p>入場・参加は無料（または低価格）。来てくれたお客さんに<br />温泉・食事・体験・物産品でお金を使ってもらう設計です。</p>
+          <div class="ds-main">毎月<span>第2土曜日</span>開催</div>
+          <div class="ds-sub">2026年4月〜2027年3月 年間スケジュール</div>
+        </div>
+        <div class="ds-free">
+          <span class="price">¥0</span>
+          参加無料
         </div>
       </div>
 
-      <!-- VENUES -->
-      <div class="sec-label">VENUE</div>
-      <div class="sec-title">会場</div>
-      <div class="venue-section">
-        <div class="venue-chip"><div class="vc-icon">⛺</div><div class="vc-name">キャンプ場</div></div>
-        <div class="venue-chip"><div class="vc-icon">🌊</div><div class="vc-name">公園・海岸</div></div>
-        <div class="venue-chip"><div class="vc-icon">♨️</div><div class="vc-name">温泉センター</div></div>
-        <div class="venue-chip"><div class="vc-icon">🛒</div><div class="vc-name">道の駅</div></div>
+      <!-- ACTIVITIES -->
+      <div class="sec-label">WHAT TO DO</div>
+      <div class="sec-title">御立岬でできること</div>
+      <div class="activity-grid">
+        <div class="activity-card">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="海・絶景" loading="lazy" />
+          <div class="ac-label">絶景の海<div class="ac-sub">不知火海を一望</div></div>
+        </div>
+        <div class="activity-card">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" alt="キャンプ" loading="lazy" />
+          <div class="ac-label">キャンプ場<div class="ac-sub">海を望むサイト</div></div>
+        </div>
+        <div class="activity-card">
+          <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80" alt="温泉" loading="lazy" />
+          <div class="ac-label">温泉センター<div class="ac-sub">旅の疲れをリセット</div></div>
+        </div>
+        <div class="activity-card">
+          <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&q=80" alt="地元の食" loading="lazy" />
+          <div class="ac-label">地元グルメ<div class="ac-sub">芦北の旬を味わう</div></div>
+        </div>
+      </div>
+
+      <!-- SEASON EVENTS -->
+      <div class="sec-label">ANNUAL EVENTS</div>
+      <div class="sec-title">季節ごとのお楽しみ</div>
+      <div class="season-events">
+        <div class="season-row">
+          <div class="season-dot dot-spring">🌸</div>
+          <div class="season-info">
+            <div class="si-name">春 — 花見・潮干狩り・ビーチクリーン</div>
+            <div class="si-events">花見BBQ、磯遊び体験、春の大型フェス（4月）</div>
+          </div>
+          <div class="season-month">4〜6月</div>
+        </div>
+        <div class="season-row">
+          <div class="season-dot dot-summer">🌊</div>
+          <div class="season-info">
+            <div class="si-name">夏 — マリンスポーツ・花火・夕焼けBBQ</div>
+            <div class="si-events">シュノーケル、カヤック、海の日ビーチフェスタ（7月）</div>
+          </div>
+          <div class="season-month">7〜9月</div>
+        </div>
+        <div class="season-row">
+          <div class="season-dot dot-autumn">🍂</div>
+          <div class="season-info">
+            <div class="si-name">秋 — みかん狩り・フードフェス・焚き火</div>
+            <div class="si-events">収穫祭、芦北秋祭りフードフェス（11月）</div>
+          </div>
+          <div class="season-month">10〜12月</div>
+        </div>
+        <div class="season-row">
+          <div class="season-dot dot-winter">🌿</div>
+          <div class="season-info">
+            <div class="si-name">冬 — もちつき・かがり火・節分イベント</div>
+            <div class="si-events">新春かがり火まつり（1月）、恵方巻づくり体験</div>
+          </div>
+          <div class="season-month">1〜3月</div>
+        </div>
+      </div>
+
+      <!-- HIGHLIGHTS -->
+      <div class="highlights">
+        <div class="hl-item"><div class="hl-icon">🎟</div><div class="hl-text">多くのイベントが<br />無料・低価格で参加OK</div></div>
+        <div class="hl-item"><div class="hl-icon">👨‍👩‍👧‍👦</div><div class="hl-text">ファミリーから<br />カップルまで歓迎</div></div>
+        <div class="hl-item"><div class="hl-icon">🐟</div><div class="hl-text">新鮮な芦北の海産物・<br />農産物が集まる</div></div>
+        <div class="hl-item"><div class="hl-icon">♨️</div><div class="hl-text">温泉センターで<br />ゆっくりお過ごしください</div></div>
+      </div>
+
+      <!-- ACCESS -->
+      <div class="access-box">
+        <div class="ab-title">ACCESS</div>
+        <div class="ab-name">御立岬公園（おたちみさきこうえん）</div>
+        <div class="ab-addr">
+          熊本県葦北郡芦北町大浦 &nbsp;—&nbsp; 不知火海を一望する芦北のリゾート<br />
+          肥薩おれんじ鉄道「佐敷駅」より車で約10分
+        </div>
       </div>
 
       <!-- FOOTER -->
       <div class="flyer-footer">
-        <div class="ff-left">
-          <h3>御立岬公園</h3>
-          <p>熊本県葦北郡芦北町大浦<br />不知火海を望む、芦北のリゾート</p>
+        <div class="ff-org">
+          主催：芦北町<br />
+          会場：御立岬公園
         </div>
         <div class="ff-url">
-          <div class="url-label">詳細カレンダーはこちら</div>
+          <div class="url-label">年間カレンダーはこちら</div>
           <a href="calendar.html" target="_blank" rel="noopener">soulsyncs.github.io/<br />otachimisaki-events/calendar.html</a>
         </div>
       </div>
 
-    </div><!-- /flyer-body -->
-  </div><!-- /flyer -->
+    </div>
+  </div>
 
 </body>
 </html>
