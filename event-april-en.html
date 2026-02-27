@@ -315,10 +315,21 @@
     .flyer-footer a { color: var(--sky); text-decoration: none; font-weight: 700; }
 
     @media print {
-      body { background: white; padding: 0; }
+      body { background: white; padding: 0; margin: 0; }
       .nav-bar { display: none; }
-      .flyer-a4 { width: 210mm; min-height: 297mm; max-width: none; box-shadow: none; }
-      .hero { height: 280px; }
+      .flyer-a4 {
+        width: 210mm;
+        height: 297mm;      /* min-height → height: A4 1 page fixed */
+        max-width: none;
+        box-shadow: none;
+        overflow: hidden;
+      }
+      .hero { height: 65mm; }
+      .body { padding: 16px 32px 12px; gap: 14px; min-height: 0; overflow: hidden; font-size: 0.92em; }
+      .schedule { padding: 10px 14px; }
+      .schedule-row { padding: 4px 0; }
+      .hl-card { height: 70px; }
+      .flyer-footer { padding: 10px 32px; font-size: 0.68rem; }
     }
 
     @media (max-width: 600px) {
@@ -465,9 +476,9 @@
           <div class="cb-title">Contact &amp; Info</div>
           <div class="cb-text">
             <strong>Organized by:</strong> Ashikita Town<br />
-            <strong>Venue:</strong> Otachimisaki Park<br /><br />
+            <strong>Venue:</strong> Otachimisaki Park<br />
             <strong>More Events &amp; Calendar:</strong><br />
-            <a href="calendar.html" target="_blank" rel="noopener">soulsyncs.github.io/<br />otachimisaki-events/</a><br /><br />
+            <a href="calendar.html" target="_blank" rel="noopener">soulsyncs.github.io/otachimisaki-events/</a><br />
             <strong>Official Site:</strong><br />
             <a href="https://otachimisaki.com" target="_blank" rel="noopener">otachimisaki.com</a>
           </div>
