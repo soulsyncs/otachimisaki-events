@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>御立岬公園 年間イベントカレンダー 2025 | 芦北の海で、毎月会いましょう。</title>
+  <meta name="description" content="熊本県芦北町・御立岬公園の年間イベント計画案。毎月第2土曜日の定例イベントから、季節の大型フェスまで。海・キャンプ・温泉・道の駅を舞台にした体験型プログラム一覧。" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ocean-dark:  #023E8A;
+      --ocean:       #0077B6;
+      --ocean-mid:   #0096C7;
+      --ocean-light: #48CAE4;
+      --sky:         #ADE8F4;
+      --sand:        #F4E4C1;
+      --sand-dark:   #E9C46A;
+      --green:       #2D6A4F;
+      --green-light: #52B788;
+      --warm:        #F4A261;
+      --sunset:      #E76F51;
+      --white:       #FFFFFF;
+      --off-white:   #F8F9FA;
+      --text-dark:   #1a1a2e;
+      --text-mid:    #495057;
+      --text-light:  #868e96;
+      --radius-lg:   20px;
+      --radius-md:   12px;
+      --radius-sm:   8px;
+      --shadow-soft: 0 4px 24px rgba(0,119,182,0.10);
+      --shadow-card: 0 8px 32px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text-dark);
+      background: var(--off-white);
+      line-height: 1.75;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(2,62,138,0.55) 0%, rgba(0,150,199,0.35) 60%, rgba(0,0,0,0.5) 100%),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      padding: 0 24px;
+      max-width: 820px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.4);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+      color: var(--sky);
+    }
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2rem, 5.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    }
+    .hero h1 span {
+      color: var(--sand-dark);
+    }
+    .hero p {
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .hero-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll svg { width: 20px; height: 20px; }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(6px); }
+    }
+
+    /* ── SECTION ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      color: var(--ocean-mid);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-mid);
+      max-width: 680px;
+      margin-bottom: 56px;
+      font-weight: 300;
+    }
+
+    /* ── OVERVIEW STATS ── */
+    .stats-section {
+      background: linear-gradient(135deg, var(--ocean-dark) 0%, var(--ocean-mid) 100%);
+      color: var(--white);
+      padding: 64px 24px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-item .num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--sand-dark);
+      line-height: 1;
+    }
+    .stat-item .unit { font-size: 1.1rem; margin-left: 4px; }
+    .stat-item .label { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-top: 8px; }
+
+    /* ── FREEMIUM ── */
+    .freemium-section { background: var(--white); }
+    .freemium-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .freemium-card {
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .freemium-card.free {
+      background: linear-gradient(135deg, var(--sky) 0%, #e0f4ff 100%);
+      border: 2px solid var(--ocean-light);
+    }
+    .freemium-card.paid {
+      background: linear-gradient(135deg, #fff8e7 0%, var(--sand) 100%);
+      border: 2px solid var(--sand-dark);
+    }
+    .freemium-card .tag {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .freemium-card.free .tag { background: var(--ocean); color: #fff; }
+    .freemium-card.paid .tag { background: var(--warm); color: #fff; }
+    .freemium-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+    .freemium-card ul { padding-left: 20px; }
+    .freemium-card li { font-size: 0.92rem; color: var(--text-mid); margin-bottom: 6px; }
+
+    /* ── CALENDAR ── */
+    .calendar-section { background: var(--off-white); }
+    .season-block { margin-bottom: 72px; }
+    .season-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid;
+    }
+    .season-icon { font-size: 2.4rem; }
+    .season-title { font-family: 'Noto Serif JP', serif; font-size: 1.8rem; font-weight: 700; }
+    .season-sub { font-size: 0.88rem; color: var(--text-light); }
+
+    .spring .season-header { border-color: #f9c6d0; }
+    .summer .season-header { border-color: var(--ocean-light); }
+    .autumn .season-header { border-color: #e08d46; }
+    .winter .season-header { border-color: #a8c8f0; }
+
+    .month-group { margin-bottom: 48px; }
+    .month-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .month-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.7rem;
+      line-height: 1.1;
+      flex-shrink: 0;
+    }
+    .month-badge .mon-num { font-size: 1.35rem; }
+    .spring .month-badge  { background: linear-gradient(135deg,#f48fb1,#f06292); }
+    .summer .month-badge  { background: linear-gradient(135deg,#29b6f6,#0288d1); }
+    .autumn .month-badge  { background: linear-gradient(135deg,#ffa726,#ef6c00); }
+    .winter .month-badge  { background: linear-gradient(135deg,#78909c,#37474f); }
+
+    .month-name-text { font-size: 1.1rem; font-weight: 700; }
+    .month-date-text { font-size: 0.82rem; color: var(--text-light); }
+
+    .events-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── EVENT CARD ── */
+    .event-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      position: relative;
+    }
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.13);
+    }
+    .event-card.big-event {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+    }
+    .event-card.big-event .card-img { height: 100%; min-height: 220px; }
+    .card-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .card-body { padding: 20px; }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      letter-spacing: 0.06em;
+    }
+    .tag-free    { background:#e3f5f1; color: var(--green); }
+    .tag-paid    { background:#fff3e0; color: #e65100; }
+    .tag-big     { background:var(--ocean-dark); color:#fff; }
+    .tag-camp    { background:#e8f5e9; color:#2e7d32; }
+    .tag-onsen   { background:#fce4ec; color:#c2185b; }
+    .tag-food    { background:#fff8e1; color:#f57f17; }
+    .tag-kids    { background:#e3f2fd; color:#1565c0; }
+    .tag-photo   { background:#f3e5f5; color:#6a1b9a; }
+    .tag-market  { background:#e0f2f1; color:#004d40; }
+    .tag-sport   { background:#e8eaf6; color:#283593; }
+    .card-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .card-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* big-event ribbon */
+    .big-ribbon {
+      position: absolute;
+      top: 16px;
+      right: -28px;
+      background: var(--sunset);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 36px;
+      transform: rotate(35deg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* ── FREEMIUM FLOW ── */
+    .flow-section { background: var(--white); }
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+    .flow-step {
+      text-align: center;
+      padding: 32px 20px;
+      position: relative;
+    }
+    .flow-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: var(--ocean-light);
+      z-index: 1;
+    }
+    .flow-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 16px;
+    }
+    .flow-step:nth-child(1) .flow-icon { background: #e3f5f1; }
+    .flow-step:nth-child(2) .flow-icon { background: #e3f2fd; }
+    .flow-step:nth-child(3) .flow-icon { background: #fff3e0; }
+    .flow-step:nth-child(4) .flow-icon { background: #fce4ec; }
+    .flow-step h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+    .flow-step p { font-size: 0.82rem; color: var(--text-mid); }
+
+    /* ── TIPS BOX ── */
+    .tips-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f3ff 100%);
+      border-left: 4px solid var(--ocean);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .tips-box h4 { font-weight: 700; color: var(--ocean-dark); margin-bottom: 12px; }
+    .tips-box ul { padding-left: 20px; }
+    .tips-box li { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 6px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ocean-dark);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--sky); text-decoration: none; }
+    footer .footer-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 56px 16px; }
+      .event-card.big-event {
+        grid-template-columns: 1fr;
+      }
+      .flow-step:not(:last-child)::after { display: none; }
+    }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce-bar {
+      background: var(--ocean);
+      color: #fff;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .announce-bar strong { color: var(--sand-dark); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,119,182,0.1);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      color: var(--ocean-dark);
+      font-size: 1rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ocean); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- Announce Bar -->
+<div class="announce-bar">
+  📅 毎月<strong>第2土曜日</strong>は御立岬公園の日 — 2025年度 年間イベントカレンダー公開中
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">🌊 御立岬公園 イベント計画</a>
+    <ul class="nav-links">
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#strategy">戦略</a></li>
+      <li><a href="#calendar">カレンダー</a></li>
+      <li><a href="#flow">収益の流れ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🏖 OTACHIMISAKI PARK — 2025 EVENT PLAN</div>
+    <h1>芦北の海で、<br /><span>毎月</span>会いましょう。</h1>
+    <p>不知火海を望む御立岬公園が、年間を通じた体験型イベントで<br />芦北町全体に人を呼び込む"集客の拠点"へ。</p>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- Stats -->
+<section class="stats-section" id="overview">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="num">12<span class="unit">ヶ月</span></div>
+        <div class="label">年間を通じた定例イベント</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">36<span class="unit">本</span></div>
+        <div class="label">月3本 × 12ヶ月の企画案</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">4<span class="unit">回</span></div>
+        <div class="label">季節の節目に開く大型フェス</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">¥0<span class="unit">〜</span></div>
+        <div class="label">無料で来場できるイベント多数</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Freemium Strategy -->
+<section class="freemium-section" id="strategy">
+  <div class="container">
+    <div class="section-label">STRATEGY</div>
+    <h2 class="section-title">「まず来てもらう」フリーミアム戦略</h2>
+    <p class="section-desc">入場・参加は無料で「来るハードルを下げる」。来てくれたお客さんに温泉・食事・体験・物産品でお金を使ってもらう設計です。</p>
+    <div class="freemium-grid">
+      <div class="freemium-card free">
+        <div class="tag">FREE — 無料で集客</div>
+        <h3>📣 まず人を呼ぶ仕掛け</h3>
+        <ul>
+          <li>イベント自体への参加は無料（または低価格）</li>
+          <li>写真映えするスポット・演出で SNS 拡散を狙う</li>
+          <li>子ども向け体験で家族層を確実に集客</li>
+          <li>毎月同じ曜日・形式で「習慣」として根付かせる</li>
+          <li>ビラを小学校・保育園・町内会に配布</li>
+        </ul>
+      </div>
+      <div class="freemium-card paid">
+        <div class="tag">BACKEND — 来場後に収益化</div>
+        <h3>💰 来てくれた人にお金を使ってもらう</h3>
+        <ul>
+          <li>🌸 温泉センター — イベント参加者に割引クーポン配布</li>
+          <li>🛒 道の駅・物産館 — 会場から徒歩動線で誘導</li>
+          <li>🏕 キャンプ場宿泊 — 当日予約特典をイベントで告知</li>
+          <li>🍳 BBQ・体験メニュー — 有料の体験コンテンツ</li>
+          <li>🎪 大型フェスは参加費あり（3,000〜5,000円/人）</li>
+        </ul>
+      </div>
+      <div class="freemium-card" style="background:linear-gradient(135deg,#f0fff4,#dcfce7);border:2px solid var(--green-light);">
+        <div class="tag" style="background:var(--green);color:#fff;">FLOW — 来場後の動線設計</div>
+        <h3>🗺 イベント → 収益の流れ</h3>
+        <ul>
+          <li>① イベント会場で「御立岬マップ＋クーポン」を手渡し</li>
+          <li>② キャンプ場・マリンハウスへ自然に誘導</li>
+          <li>③ 温泉センターで「クーポン利用 = 初体験」を生む</li>
+          <li>④ 物産館で地元産品を購入 → リピーター化</li>
+          <li>⑤ SNS投稿 → 次回イベントの拡散につなげる</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tips-box" style="margin-top:40px;">
+      <h4>💡 3,000人来場実績（プロジェクションマッピング）からの学び</h4>
+      <ul>
+        <li>「来てもらう力」はすでにある。問題は来た後の「収益導線」が設計されていなかったこと。</li>
+        <li>次のイベントから「御立岬おためしセット（マップ＋温泉クーポン＋物産館クーポン＋次回案内）」を全来場者に配布する。</li>
+        <li>イベントをバラバラに開催するのではなく、「毎月第2土曜」という"型"を作ることで予告→期待→来場のサイクルが回り始める。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Calendar -->
+<section class="calendar-section" id="calendar">
+  <div class="container">
+    <div class="section-label">ANNUAL CALENDAR</div>
+    <h2 class="section-title">年間イベントカレンダー 2025</h2>
+    <p class="section-desc">毎月第2土曜日の定例イベントを中心に、季節の節目に大型フェスを組み込んだ年間設計です。</p>
+
+    <!-- ━━━ 春 ━━━ -->
+    <div class="season-block spring">
+      <div class="season-header">
+        <div class="season-icon">🌸</div>
+        <div>
+          <div class="season-title">春 Spring</div>
+          <div class="season-sub">3月・4月・5月 ／ 海が目覚める季節。家族・カップルの来場が増え始める</div>
+        </div>
+      </div>
+
+      <!-- 3月 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge">
+            <span class="mon-num">3</span>
+            <span>月</span>
+          </div>
+          <div>
+            <div class="month-name-text">3月 ／ 第2土曜日</div>
+            <div class="month-date-text">春の訪れ × 御立岬の始まり</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1522383225653-ed111181a951?w=600&q=75" alt="ひな祭り" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料入場</span>
+                <span class="card-tag tag-kids">子ども向け</span>
+                <span class="card-tag tag-food">物産館連動</span>
+              </div>
+              <div class="card-title">🎎 ひな祭り × 春の海ピクニック</div>
+              <div class="card-desc">浜辺にお雛様を飾り、家族でピクニックを楽しむ。物産館で桃の節句スイーツを販売。子ども向け工作体験（雛人形の折り紙）も実施。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜エリア・物産館</span>
+                <span class="meta-item">💰 入場無料 / 工作300円〜</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=75" alt="潮干狩り" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料体験</span>
+                <span class="card-tag tag-kids">家族向け</span>
+              </div>
+              <div class="card-title">🐚 春の潮干狩り体験デー</div>
+              <div class="card-desc">干潮時間に合わせた潮干狩り体験。採った貝は物産館で調理体験も可能。地元の漁師さんが海の話をしてくれるコーナーも設置。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 浜辺・マリンハウス</span>
+                <span class="meta-item">💰 1,000円/人（道具レンタル込み）</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=75" alt="ビーチクリーン" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料参加</span>
+                <span class="card-tag tag-camp">キャンプ場</span>
+              </div>
+              <div class="card-title">🌊 ビーチクリーン × 春BBQ</div>
+              <div class="card-desc">午前中に浜辺清掃（参加者にはステッカープレゼント）、午後はキャンプ場でBBQ。地域の学校・町内会を巻き込んで「地元の恒例行事」化を目指す。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 浜辺・キャンプ場</span>
+                <span class="meta-item">💰 清掃無料 / BBQセット2,500円〜</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4月 大型 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge">
+            <span class="mon-num">4</span>
+            <span>月</span>
+          </div>
+          <div>
+            <div class="month-name-text">4月 ／ 第2土曜日 + 大型イベント</div>
+            <div class="month-date-text">🌸 季節の節目 — 春の大型フェス</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card big-event" style="overflow:visible;">
+            <div class="big-ribbon">★ 大型イベント</div>
+            <img class="card-img" src="https://images.unsplash.com/photo-1546961342-ea5f62d951fe?w=800&q=75" alt="春フェス" loading="lazy" style="height:100%;min-height:220px;object-fit:cover;" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-big">大型フェス</span>
+                <span class="card-tag tag-market">マルシェ</span>
+                <span class="card-tag tag-food">グルメ</span>
+                <span class="card-tag tag-paid">参加費あり</span>
+              </div>
+              <div class="card-title">🌸 御立岬 春の海開きフェスタ</div>
+              <div class="card-desc">
+                シーズン幕開けを飾る大型イベント。花見×ビーチマルシェ×ステージパフォーマンスを一日で楽しめる芦北最大の春祭りを目指す。地元飲食店・農家・漁師が出店し「外貨獲得」の核となる場を設計。
+                <br /><br />
+                <strong>プログラム例：</strong>
+                <ul style="padding-left:16px;margin-top:8px;font-size:0.85rem;color:var(--text-mid);">
+                  <li>10:00 開幕セレモニー（海開き宣言）</li>
+                  <li>10:30〜 マルシェ開始（地元産品・飲食30ブース目標）</li>
+                  <li>13:00〜 ステージパフォーマンス・地元アーティスト</li>
+                  <li>15:00〜 フォトコンテスト表彰式</li>
+                  <li>17:00〜 夕焼けウォークイン（SNS映えスポット誘導）</li>
+                </ul>
+              </div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜全エリア</span>
+                <span class="meta-item">💰 入場500円（中学生以下無料）/ 飲食別途</span>
+                <span class="meta-item">🎯 目標来場者：2,000〜3,000人</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=75" alt="マリンスポーツ" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料体験</span>
+                <span class="card-tag tag-sport">スポーツ</span>
+              </div>
+              <div class="card-title">🏄 春のマリンスポーツ体験会</div>
+              <div class="card-desc">SUP（スタンドアップパドルボード）・シーカヤック・シュノーケリングの3メニューから選べる体験型イベント。初心者向けレッスン付き。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜エリア</span>
+                <span class="meta-item">💰 3,000〜5,000円/体験</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&q=75" alt="マルシェ" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料来場</span>
+                <span class="card-tag tag-market">マルシェ</span>
+              </div>
+              <div class="card-title">🥬 芦北産地直売マルシェ</div>
+              <div class="card-desc">地元の農家・漁師・加工業者が集まる朝市型マルシェ。「生産者と直接話せる」が魅力。毎回テーマ野菜・テーマ魚介を設定してリピーターを生む。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園広場・道の駅連動</span>
+                <span class="meta-item">💰 入場無料 / 購入は各自</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5月 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge">
+            <span class="mon-num">5</span>
+            <span>月</span>
+          </div>
+          <div>
+            <div class="month-name-text">5月 ／ 第2土曜日（こどもの日週）</div>
+            <div class="month-date-text">GW明けの集客をキープする</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&q=75" alt="こどもの日" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料参加</span>
+                <span class="card-tag tag-kids">子ども主役</span>
+              </div>
+              <div class="card-title">🎏 こどもの日アウトドア体験祭</div>
+              <div class="card-desc">子どもが主役の一日。魚つかみ体験・たき火・虫探し・海砂のお城作りなど、自然の中でしかできない体験を詰め込む。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 キャンプ場・浜辺</span>
+                <span class="meta-item">💰 無料 / 一部体験500円〜</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&q=75" alt="親子釣り" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料体験</span>
+                <span class="card-tag tag-kids">親子向け</span>
+              </div>
+              <div class="card-title">🎣 親子釣り大会 in 御立岬</div>
+              <div class="card-desc">初心者でも楽しめる道具・餌付きの釣り体験。釣った魚は物産館で唐揚げに調理してもらえる特典付き。地元の漁師さんが先生役。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 釣りスポット・マリンハウス</span>
+                <span class="meta-item">💰 親子セット2,000円（道具・餌込み）</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=600&q=75" alt="フォトウォーク" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料</span>
+                <span class="card-tag tag-photo">フォト</span>
+              </div>
+              <div class="card-title">📸 春の御立岬フォトウォーク</div>
+              <div class="card-desc">公園内の絶景スポットをガイドと歩きながら撮影する1時間ウォーク。スマホでもOK。SNSでハッシュタグをつけてシェアすることで御立岬の認知を広げる。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園全域</span>
+                <span class="meta-item">💰 無料（SNS投稿任意）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /spring -->
+
+    <!-- ━━━ 夏 ━━━ -->
+    <div class="season-block summer">
+      <div class="season-header">
+        <div class="season-icon">☀️</div>
+        <div>
+          <div class="season-title">夏 Summer</div>
+          <div class="season-sub">6月・7月・8月 ／ 御立岬のピークシーズン。稼ぎ頭を"さらに"強くする</div>
+        </div>
+      </div>
+
+      <!-- 6月 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">6</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">6月 ／ 第2土曜日</div>
+            <div class="month-date-text">夏の始まり × 海開き前の盛り上げ</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=75" alt="海開き" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料イベント</span>
+                <span class="card-tag tag-kids">全世代</span>
+              </div>
+              <div class="card-title">🌊 海開き前夜祭 × ウォーターゲーム</div>
+              <div class="card-desc">海水浴シーズン直前の盛り上げイベント。水鉄砲合戦・砂のアート・浜辺のヨガなど「まだ混んでいない浜辺」を楽しむ企画。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜エリア</span>
+                <span class="meta-item">💰 無料</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=600&q=75" alt="SUP" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料体験</span>
+                <span class="card-tag tag-sport">マリンスポーツ</span>
+              </div>
+              <div class="card-title">🏄 SUP & シーカヤック 初心者デー</div>
+              <div class="card-desc">インストラクター付きの初心者向けレッスン。「海を怖いと思っていた人が、海が好きになる」体験を設計。温泉割引クーポン付き。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜エリア</span>
+                <span class="meta-item">💰 4,000円（温泉クーポン付き）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=600&q=75" alt="ホタル" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料</span>
+                <span class="card-tag tag-photo">夜の体験</span>
+              </div>
+              <div class="card-title">✨ 夜の海 × 夏の光さがしウォーク</div>
+              <div class="card-desc">夕暮れから始まる夜の公園ウォーク。星空観察・夜の海の音・波打ち際の光（夜光虫）を楽しむ幻想的な体験。キャンドルナイト形式。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜・公園</span>
+                <span class="meta-item">💰 無料（予約制）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7月 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">7</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">7月 ／ 第2土曜日</div>
+            <div class="month-date-text">最繁忙期前の「行きたい理由」を増やす</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=75" alt="キャンプ" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料</span>
+                <span class="card-tag tag-camp">宿泊連動</span>
+              </div>
+              <div class="card-title">⛺ 夏のキャンプ × 夜の海体験セット</div>
+              <div class="card-desc">キャンプ場泊＋夜の浜辺ツアー＋翌朝漁師の朝食をセットにしたパッケージプラン。「宿泊稼働率アップ」を直接狙う旗艦メニュー。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 キャンプ場</span>
+                <span class="meta-item">💰 8,000円〜/人（宿泊・食事込み）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=75" alt="ナイトパーティー" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">参加費</span>
+                <span class="card-tag tag-food">フード</span>
+              </div>
+              <div class="card-title">🌙 サマーナイト × ビーチバーベキュー</div>
+              <div class="card-desc">日が落ちてから始まる大人の夜イベント。地元食材のBBQ・地酒・音楽。「夏の夜の御立岬」という新しいコンテンツを作る。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜エリア</span>
+                <span class="meta-item">💰 5,000円/人（食材・飲み物込み）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1471922694854-ff1b63b20054?w=600&q=75" alt="子ども探検" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料</span>
+                <span class="card-tag tag-kids">子ども向け</span>
+              </div>
+              <div class="card-title">🔍 こども うみ探検隊！</div>
+              <div class="card-desc">タコ・カニ・ヒトデ…御立岬の海の生き物を探す1時間の探検体験。地元の漁師さんや環境学習の専門家が案内。夏休みの自由研究にもぴったり。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 干潮の浜辺</span>
+                <span class="meta-item">💰 無料（要事前申込）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8月 大型 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">8</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">8月 ／ 第2土曜日 + 大型イベント</div>
+            <div class="month-date-text">🎆 季節の節目 — 夏の大型フェス</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card big-event" style="overflow:visible;">
+            <div class="big-ribbon">★ 大型イベント</div>
+            <img class="card-img" src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=800&q=75" alt="花火" loading="lazy" style="height:100%;min-height:220px;object-fit:cover;" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-big">大型フェス</span>
+                <span class="card-tag tag-paid">参加費あり</span>
+              </div>
+              <div class="card-title">🎆 御立岬 サマーフェスタ × 花火大会</div>
+              <div class="card-desc">
+                年に一度の夏の最大イベント。海上花火・縁日・盆踊り・プロジェクションマッピングを組み合わせた一大フェスティバル。「年に一度の花火を御立岬で見る」という"定番の思い出"を作る。
+                <br /><br />
+                <strong>プログラム例：</strong>
+                <ul style="padding-left:16px;margin-top:8px;font-size:0.85rem;color:var(--text-mid);">
+                  <li>16:00 縁日・出店エリアオープン（地元50ブース）</li>
+                  <li>18:00〜 ステージパフォーマンス・盆踊り</li>
+                  <li>20:00〜 プロジェクションマッピング（御立岬の歴史を映像で）</li>
+                  <li>20:30〜 海上花火（20分間）</li>
+                  <li>終了後 温泉センター深夜延長開放（クーポン配布）</li>
+                </ul>
+              </div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜全域</span>
+                <span class="meta-item">💰 入場1,000円（小学生以下無料）</span>
+                <span class="meta-item">🎯 目標来場者：3,000〜5,000人</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=75" alt="ビーチバレー" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料参加</span>
+                <span class="card-tag tag-sport">スポーツ</span>
+              </div>
+              <div class="card-title">🏐 ビーチバレー × ビーチサッカー大会</div>
+              <div class="card-desc">参加チームを事前募集。地元の中学・高校生チームも参加OKに。「大会を見に来る人」も来場者に取り込める。表彰式後に物産館でお食事会。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜</span>
+                <span class="meta-item">💰 チーム参加費3,000円 / 観戦無料</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&q=75" alt="縁日" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料</span>
+                <span class="card-tag tag-food">食べ歩き</span>
+              </div>
+              <div class="card-title">🏮 夏の縁日 × 地元グルメ屋台</div>
+              <div class="card-desc">ヨーヨー釣り・金魚すくい・射的などの定番縁日に加え、地元の食材を使った屋台グルメを集める。「懐かしい夏」と「地元の美味しさ」を同時に体験。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園広場</span>
+                <span class="meta-item">💰 無料入場 / 各屋台ごと</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /summer -->
+
+    <!-- ━━━ 秋 ━━━ -->
+    <div class="season-block autumn">
+      <div class="season-header">
+        <div class="season-icon">🍂</div>
+        <div>
+          <div class="season-title">秋 Autumn</div>
+          <div class="season-sub">9月・10月・11月 ／ 最も伸びしろの大きい季節。閑散期を「穴場の季節」に変える</div>
+        </div>
+      </div>
+
+      <!-- 9月 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">9</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">9月 ／ 第2土曜日</div>
+            <div class="month-date-text">夏の終わり × 夕日の季節</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=75" alt="夕日" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料</span>
+                <span class="card-tag tag-photo">SNS映え</span>
+              </div>
+              <div class="card-title">🌅 夕日 × 星空フォトコンテスト</div>
+              <div class="card-desc">御立岬から見える不知火海の夕日を撮影して応募するコンテスト。SNSハッシュタグ投稿で参加でき、優秀作品は観光PR素材として活用。御立岬の認知拡大に直結。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 夕日スポット全域</span>
+                <span class="meta-item">💰 無料（SNS投稿で参加）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1484318571209-661cf29a69c3?w=600&q=75" alt="マラソン" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">参加費</span>
+                <span class="card-tag tag-sport">スポーツ</span>
+              </div>
+              <div class="card-title">🏃 御立岬 秋のビーチ&パークラン</div>
+              <div class="card-desc">浜辺〜公園をコースにした5kmランニング大会。参加費に「温泉入浴券＋物産館クーポン」が込みのパッケージ。「走った後に温泉」が鉄板の体験セット。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園全域</span>
+                <span class="meta-item">💰 2,000円（温泉＋物産館クーポン込み）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1509358271058-acd22cc93898?w=600&q=75" alt="収穫祭" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料入場</span>
+                <span class="card-tag tag-market">マルシェ</span>
+              </div>
+              <div class="card-title">🌾 芦北秋の収穫祭 × マルシェ</div>
+              <div class="card-desc">芦北産の秋の恵みを集めたマルシェ。不知火みかん・地元野菜・海産物の直売。料理体験コーナーも設置。「ここにしかない味」を体験してもらうことでリピーター化を促す。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 道の駅・公園広場</span>
+                <span class="meta-item">💰 入場無料 / 購入各自</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10月 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">10</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">10月 ／ 第2土曜日</div>
+            <div class="month-date-text">ハロウィン × 秋のアウトドア</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1508361727343-ca787442dcd7?w=600&q=75" alt="ハロウィン" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料</span>
+                <span class="card-tag tag-kids">子ども向け</span>
+              </div>
+              <div class="card-title">🎃 ハロウィン × ビーチトリックオアトリート</div>
+              <div class="card-desc">仮装した子どもたちが公園内を回ってお菓子をもらう体験。出店が「お菓子ブース」を設置し、地元産品のクーポンも配布。SNS映えの仮装コンテスト付き。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園全域</span>
+                <span class="meta-item">💰 無料（仮装推奨）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1534787238916-9ba6764efd4f?w=600&q=75" alt="グランピング" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料</span>
+                <span class="card-tag tag-camp">宿泊</span>
+              </div>
+              <div class="card-title">🏕 秋のグランピング体験 × 地元ディナー</div>
+              <div class="card-desc">秋の夜長を海辺のグランピングで過ごす体験型宿泊プラン。地元食材のフルコースディナー付き。「夏が終わっても泊まりに来る理由」を作る。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 キャンプ場</span>
+                <span class="meta-item">💰 15,000〜25,000円/人（食事・宿泊込み）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1472457897821-70d3819a0e24?w=600&q=75" alt="シーカヤック" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">体験有料</span>
+                <span class="card-tag tag-sport">スポーツ</span>
+              </div>
+              <div class="card-title">🚣 秋の海 シーカヤック&スノーケリング</div>
+              <div class="card-desc">海が穏やかな秋だからこそ楽しめるマリンスポーツ。水温も高く海の中の透明度は最高の季節。「夏より空いていてゆっくり楽しめる」を売りにする。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜エリア</span>
+                <span class="meta-item">💰 3,500〜5,000円</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11月 大型 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">11</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">11月 ／ 第2土曜日 + 大型イベント</div>
+            <div class="month-date-text">🎆 季節の節目 — 秋の大型フェス</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card big-event" style="overflow:visible;">
+            <div class="big-ribbon">★ 大型イベント</div>
+            <img class="card-img" src="https://images.unsplash.com/photo-1574500879440-6cca18b84696?w=800&q=75" alt="秋フェス花火" loading="lazy" style="height:100%;min-height:220px;object-fit:cover;" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-big">大型フェス</span>
+                <span class="card-tag tag-market">マルシェ</span>
+                <span class="card-tag tag-paid">参加費あり</span>
+              </div>
+              <div class="card-title">🍂 芦北秋祭り × 御立岬フードフェス</div>
+              <div class="card-desc">
+                秋の大型収穫祭。地元の食・音楽・工芸を集めたフードフェスに花火を組み合わせ、「冬前の最大イベント」として定着させる。町全体の飲食店・農家・漁師との協力体制を構築。
+                <br /><br />
+                <strong>プログラム例：</strong>
+                <ul style="padding-left:16px;margin-top:8px;font-size:0.85rem;color:var(--text-mid);">
+                  <li>11:00〜 フードマルシェ開催（食・工芸・体験 40ブース）</li>
+                  <li>14:00〜 ステージパフォーマンス・地元音楽</li>
+                  <li>16:30〜 夕焼けと共にライトアップ</li>
+                  <li>18:30〜 締めの打ち上げ花火（昨年実績：盛況）</li>
+                </ul>
+              </div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園全域・浜辺</span>
+                <span class="meta-item">💰 入場500円（中学生以下無料）</span>
+                <span class="meta-item">🎯 目標来場者：2,000〜3,000人</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1490682143684-14369e18dce8?w=600&q=75" alt="焚き火" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">低価格</span>
+                <span class="card-tag tag-camp">焚き火</span>
+              </div>
+              <div class="card-title">🔥 秋の焚き火ナイト × 地元芋煮会</div>
+              <div class="card-desc">キャンプ場の焚き火を囲んで地元産の芋・野菜・魚介を煮る「芋煮会スタイル」のイベント。見知らぬ人と同じ鍋を囲む体験が「また来たい」につながる。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 キャンプ場</span>
+                <span class="meta-item">💰 1,500円（食材込み）</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=75" alt="七五三" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料</span>
+                <span class="card-tag tag-photo">記念撮影</span>
+              </div>
+              <div class="card-title">👘 七五三 × 御立岬記念撮影スポット</div>
+              <div class="card-desc">不知火海を背景にした七五三の記念撮影スポットを開放。カメラマンの紹介サービスも用意。「一生の思い出の場所」として御立岬が選ばれるように。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 絶景ポイント全域</span>
+                <span class="meta-item">💰 スポット無料 / 撮影依頼は別途</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /autumn -->
+
+    <!-- ━━━ 冬 ━━━ -->
+    <div class="season-block winter">
+      <div class="season-header">
+        <div class="season-icon">❄️</div>
+        <div>
+          <div class="season-title">冬 Winter</div>
+          <div class="season-sub">12月・1月・2月 ／ 差別化余地が最も大きい季節。「冬の海」という新体験を作る</div>
+        </div>
+      </div>
+
+      <!-- 12月 大型 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">12</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">12月 ／ 第2土曜日 + 大型イベント</div>
+            <div class="month-date-text">🎄 季節の節目 — 冬の大型イベント</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card big-event" style="overflow:visible;">
+            <div class="big-ribbon">★ 大型イベント</div>
+            <img class="card-img" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=75" alt="イルミネーション" loading="lazy" style="height:100%;min-height:220px;object-fit:cover;" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-big">大型イベント</span>
+                <span class="card-tag tag-free">入場無料</span>
+                <span class="card-tag tag-onsen">温泉連動</span>
+              </div>
+              <div class="card-title">🎄 御立岬 ウィンターナイト × イルミネーション</div>
+              <div class="card-desc">
+                公園施設全体をイルミネーションでライトアップ。「冬の海×光」という唯一無二の景色を作る。カップルの聖地・家族の思い出の場所として「毎年12月は御立岬」を定着させる。
+                <br /><br />
+                <strong>収益設計：</strong>
+                <ul style="padding-left:16px;margin-top:8px;font-size:0.85rem;color:var(--text-mid);">
+                  <li>入場無料でライトアップを楽しんでもらう</li>
+                  <li>温泉センターは延長営業＋クリスマス特別メニュー</li>
+                  <li>ホットワイン・地元スイーツの屋台</li>
+                  <li>キャンプ場「冬の特別プラン」宿泊促進</li>
+                </ul>
+              </div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園全域</span>
+                <span class="meta-item">💰 入場無料（飲食・宿泊で収益）</span>
+                <span class="meta-item">🎯 目標来場者：1,500〜2,500人</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1543168256-418811576931?w=600&q=75" alt="焚き火クリスマス" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料</span>
+                <span class="card-tag tag-camp">キャンプ</span>
+              </div>
+              <div class="card-title">⛺ 焚き火クリスマスキャンプ</div>
+              <div class="card-desc">クリスマスをキャンプ場で過ごす体験型プラン。焚き火を囲んで地元食材のクリスマスディナー。「海辺のクリスマス」という忘れられない体験を届ける。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 キャンプ場</span>
+                <span class="meta-item">💰 18,000円〜/人（食事・宿泊込み）</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=75" alt="年越し" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">参加費</span>
+                <span class="card-tag tag-onsen">温泉</span>
+              </div>
+              <div class="card-title">🎊 御立岬 年越しカウントダウン</div>
+              <div class="card-desc">大晦日〜元旦を海辺で迎えるカウントダウンイベント。焚き火・海の前での新年の誓い・元旦の日の出鑑賞。「毎年ここで年を越す」という場所にする。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 海浜エリア</span>
+                <span class="meta-item">💰 3,000円（ドリンク・軽食込み）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1月 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">1</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">1月 ／ 第2土曜日</div>
+            <div class="month-date-text">新年の始まりを御立岬で</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1547496502-affa22d38842?w=600&q=75" alt="餅つき" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料配布あり</span>
+                <span class="card-tag tag-kids">全世代</span>
+              </div>
+              <div class="card-title">🎍 新春 餅つき大会 × 甘酒振る舞い</div>
+              <div class="card-desc">新年恒例の餅つき体験。地元のおじいちゃん・おばあちゃんも登場し「昔ながらの正月」を次の世代に伝える。甘酒・お汁粉は来場者全員に無料配布。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園広場</span>
+                <span class="meta-item">💰 無料（甘酒・お汁粉配布）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=75" alt="焚き火星空" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料</span>
+                <span class="card-tag tag-camp">夜の体験</span>
+              </div>
+              <div class="card-title">🔭 冬の焚き火 × 星空観察ナイト</div>
+              <div class="card-desc">冬は空気が澄んで星が最もきれいな季節。焚き火を囲みながら望遠鏡で星を見る。天文の専門家をゲストに招き「学び＋体験」を同時に提供。リピート動機の2軸（体験＋学び）を満たす。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 キャンプ場</span>
+                <span class="meta-item">💰 2,000円（焚き火＋望遠鏡体験込み）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?w=600&q=75" alt="冬マルシェ" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料</span>
+                <span class="card-tag tag-market">マルシェ</span>
+              </div>
+              <div class="card-title">🛍 新春マルシェ × 書き初め体験</div>
+              <div class="card-desc">地元産品の新春マルシェと、書き初め体験コーナーを組み合わせ。子どもたちが書いた作品を公園内に展示することで保護者・祖父母の来場も促す。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 公園広場・道の駅</span>
+                <span class="meta-item">💰 無料</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2月 -->
+      <div class="month-group">
+        <div class="month-label">
+          <div class="month-badge"><span class="mon-num">2</span><span>月</span></div>
+          <div>
+            <div class="month-name-text">2月 ／ 第2土曜日</div>
+            <div class="month-date-text">節分・バレンタイン × 冬の締めくくり</div>
+          </div>
+        </div>
+        <div class="events-row">
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1606103920295-9a091573f160?w=600&q=75" alt="節分" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-free">無料参加</span>
+                <span class="card-tag tag-kids">子ども主役</span>
+                <span class="card-tag tag-food">物産館連動</span>
+              </div>
+              <div class="card-title">👹 節分イベント × ビーチ豆まき</div>
+              <div class="card-desc">運営スタッフが鬼のコスチュームで登場し、子どもたちが豆まき体験。物産館では節分にちなんだ恵方巻・豆菓子を販売。「海辺の節分」という珍しい体験がSNS映え。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 浜辺・公園広場</span>
+                <span class="meta-item">💰 無料 / 恵方巻販売別途</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&q=75" alt="バレンタイン" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料体験</span>
+                <span class="card-tag tag-onsen">カップル向け</span>
+              </div>
+              <div class="card-title">💕 バレンタイン × 海辺のスイーツ体験</div>
+              <div class="card-desc">カップル・親子向けのチョコレート・スイーツ手作り体験。「御立岬で作ったチョコ」という特別感を演出。温泉センターでのカップルプランと連動してロマンティックな一日を設計。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 マリンハウス・温泉</span>
+                <span class="meta-item">💰 3,500円/組（材料＋温泉クーポン）</span>
+              </div>
+            </div>
+          </div>
+          <div class="event-card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=75" alt="冬グルメ" loading="lazy" />
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="card-tag tag-paid">有料</span>
+                <span class="card-tag tag-food">グルメ</span>
+                <span class="card-tag tag-onsen">温泉</span>
+              </div>
+              <div class="card-title">♨️ 冬の温泉 × 芦北グルメ祭り</div>
+              <div class="card-desc">冬に一番おいしい芦北の魚介・柑橘類を温泉と組み合わせた「冬のぜいたく体験」。「温泉に入って、おいしいものを食べて、海を眺める」という最高の冬の過ごし方を提案。</div>
+              <div class="card-meta">
+                <span class="meta-item">📍 温泉センター・物産館</span>
+                <span class="meta-item">💰 4,000円（温泉＋食事セット）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /winter -->
+
+  </div>
+</section>
+
+<!-- Flow Section -->
+<section class="flow-section" id="flow">
+  <div class="container">
+    <div class="section-label">REVENUE FLOW</div>
+    <h2 class="section-title">来場者が「お金を使う」流れ</h2>
+    <p class="section-desc">無料で集めた来場者が、自然に温泉・物産館・キャンプ場へ流れる導線設計。毎回のイベントで「御立岬おためしセット」を配布することが起点になります。</p>
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="flow-icon">📣</div>
+        <h4>① 告知・来場</h4>
+        <p>ビラ・SNS・口コミで第2土曜に来場。入場無料・参加無料で「来るハードルをゼロに」。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">🎫</div>
+        <h4>② おためしセット配布</h4>
+        <p>全来場者にガイドマップ＋温泉割引クーポン＋物産館クーポン＋次回イベント案内を手渡し。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">♨️</div>
+        <h4>③ 温泉・物産館へ</h4>
+        <p>クーポンを手に「せっかくだから」と温泉・物産館へ。初体験がリピーターを生む。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-icon">📲</div>
+        <h4>④ SNS投稿 → 拡散</h4>
+        <p>体験をSNS投稿。次月のイベント告知が自然に拡散し、フォロワー・来場者が雪だるま式に増える。</p>
+      </div>
+    </div>
+
+    <div class="tips-box" style="margin-top:48px;">
+      <h4>📊 KPI（目標の測り方）の提案</h4>
+      <ul>
+        <li>月次来場者数（外から来る人が6,000人→目標1万人）</li>
+        <li>イベント後のクーポン回収率（温泉・物産館）</li>
+        <li>SNSフォロワー数（現在500人→目標3万人）</li>
+        <li>宿泊稼働率（特に10〜3月の閑散期）</li>
+        <li>「また来たいか」アンケート回答率（目標：参加者の80%以上がYES）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">🌊 御立岬公園 年間イベント計画</div>
+  <p style="margin-bottom:8px;">熊本県葦北郡芦北町大浦 — 不知火海を望む、芦北のリゾート</p>
+  <p>公式サイト: <a href="https://otachimisaki.com" target="_blank" rel="noopener">otachimisaki.com</a></p>
+  <p style="margin-top:20px;font-size:0.75rem;color:rgba(255,255,255,0.4);">本資料は内部企画用の草案です。掲載写真はUnsplashよりフリー素材を使用しています。</p>
+</footer>
+
+</body>
+</html>
