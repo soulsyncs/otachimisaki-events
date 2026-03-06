@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>応募フォーム | 御立岬プロジェクト × ソウルシンクス</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:       #0A1628;
+      --ocean-dark: #023E8A;
+      --ocean:      #0077B6;
+      --ocean-mid:  #0096C7;
+      --sky:        #ADE8F4;
+      --sand:       #F4E4C1;
+      --sand-dark:  #E9C46A;
+      --warm:       #F4A261;
+      --sunset:     #E76F51;
+      --white:      #FFFFFF;
+      --gray-light: #F7F8FA;
+      --gray:       #8A96A3;
+      --text-dark:  #1A2332;
+      --border:     #E2E8F0;
+      --error:      #E53E3E;
+      --success:    #38A169;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--gray-light);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .form-header {
+      background:
+        linear-gradient(to bottom, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.92) 100%),
+        url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1400&q=85') center / cover no-repeat;
+      padding: clamp(40px, 8vw, 80px) clamp(24px, 6vw, 80px) clamp(50px, 8vw, 80px);
+      text-align: center;
+    }
+    .form-header .fh-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      margin-bottom: 28px;
+      transition: color 0.2s;
+    }
+    .form-header .fh-back:hover { color: white; }
+    .form-header .fh-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      padding: 7px 18px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .form-header h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: white;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .form-header p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── STEP INDICATOR ── */
+    .step-bar {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(24px, 6vw, 80px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .step-bar-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 16px 0;
+      gap: 0;
+    }
+    .step-bar-inner::-webkit-scrollbar { display: none; }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      padding: 0 12px;
+      cursor: pointer;
+    }
+    .step-item:first-child { padding-left: 0; }
+    .step-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--border);
+      color: var(--gray);
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+    .step-item.active .step-dot,
+    .step-item.done .step-dot {
+      background: var(--ocean);
+      color: white;
+    }
+    .step-item.done .step-dot { background: var(--success); }
+    .step-label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.3s;
+    }
+    .step-item.active .step-label { color: var(--ocean); font-weight: 700; }
+    .step-item.done .step-label { color: var(--success); }
+    .step-arrow {
+      color: #D1D5DB;
+      font-size: 0.75rem;
+      margin: 0 4px;
+      flex-shrink: 0;
+    }
+
+    /* ── FORM WRAPPER ── */
+    .form-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(32px, 6vw, 56px) clamp(24px, 4vw, 0px);
+    }
+
+    /* ── SECTION BLOCK ── */
+    .form-section {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      display: none;
+    }
+    .form-section.active { display: block; }
+
+    .fs-header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--gray-light);
+    }
+    .fs-step-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--ocean);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .fs-header h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* ── FORM FIELDS ── */
+    .field-group {
+      margin-bottom: 24px;
+    }
+    .field-group:last-of-type { margin-bottom: 0; }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    label .required {
+      display: inline-block;
+      background: var(--sunset);
+      color: white;
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 50px;
+      margin-left: 8px;
+      vertical-align: middle;
+      font-weight: 700;
+    }
+    label .optional {
+      display: inline-block;
+      background: var(--border);
+      color: var(--gray);
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 50px;
+      margin-left: 8px;
+      vertical-align: middle;
+      font-weight: 500;
+    }
+    .field-hint {
+      font-size: 0.76rem;
+      color: var(--gray);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--ocean-mid);
+      box-shadow: 0 0 0 3px rgba(0,150,199,0.12);
+    }
+    input.error, select.error, textarea.error {
+      border-color: var(--error);
+    }
+    .error-msg {
+      font-size: 0.76rem;
+      color: var(--error);
+      margin-top: 6px;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A96A3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+      line-height: 1.8;
+    }
+
+    /* ── RADIO / CHECKBOX ── */
+    .radio-group, .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .radio-item, .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .radio-item:hover, .check-item:hover {
+      border-color: var(--ocean-mid);
+      background: rgba(0,150,199,0.03);
+    }
+    .radio-item input, .check-item input { display: none; }
+    .radio-item.selected, .check-item.selected {
+      border-color: var(--ocean);
+      background: rgba(0,119,182,0.06);
+    }
+    .radio-mark, .check-mark {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+      margin-top: 1px;
+    }
+    .check-mark { border-radius: 5px; }
+    .radio-item.selected .radio-mark,
+    .check-item.selected .check-mark {
+      border-color: var(--ocean);
+      background: var(--ocean);
+    }
+    .radio-item.selected .radio-mark::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+    }
+    .check-item.selected .check-mark::after {
+      content: '✓';
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .radio-text, .check-text {
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    /* ── CHAR COUNTER ── */
+    .char-counter {
+      text-align: right;
+      font-size: 0.72rem;
+      color: var(--gray);
+      margin-top: 6px;
+    }
+    .char-counter.warn { color: var(--warm); }
+    .char-counter.over { color: var(--error); }
+
+    /* ── PRIVACY ── */
+    .privacy-box {
+      background: var(--gray-light);
+      border-radius: 12px;
+      padding: 20px 20px;
+      margin-bottom: 20px;
+      max-height: 160px;
+      overflow-y: auto;
+      font-size: 0.78rem;
+      color: #666;
+      line-height: 1.9;
+    }
+
+    /* ── NAVIGATION BUTTONS ── */
+    .form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: 1.5px solid var(--border);
+      color: var(--gray);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-back:hover { border-color: var(--ocean); color: var(--ocean); }
+    .btn-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-mid));
+      border: none;
+      color: white;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,119,182,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-next:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,119,182,0.45);
+    }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--sunset), var(--warm));
+      border: none;
+      color: white;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(231,111,81,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(231,111,81,0.5);
+    }
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── CONFIRM PAGE ── */
+    #section-confirm {
+      display: none;
+    }
+    #section-confirm.active { display: block; }
+    .confirm-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .confirm-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .confirm-table tr:last-child { border-bottom: none; }
+    .confirm-table th {
+      text-align: left;
+      font-size: 0.78rem;
+      color: var(--gray);
+      font-weight: 500;
+      padding: 14px 16px 14px 0;
+      vertical-align: top;
+      width: 180px;
+      min-width: 140px;
+    }
+    .confirm-table td {
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      padding: 14px 0;
+      line-height: 1.7;
+    }
+
+    /* ── SUCCESS PAGE ── */
+    #section-success {
+      display: none;
+      text-align: center;
+    }
+    #section-success.active { display: block; }
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ocean), var(--success));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 24px;
+    }
+    #section-success h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    #section-success p {
+      font-size: 0.92rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+    .back-to-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--navy);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 14px 28px;
+      border-radius: 50px;
+      transition: background 0.2s;
+    }
+    .back-to-top:hover { background: var(--ocean-dark); }
+
+    /* ── LOADING ── */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,22,40,0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .loading-overlay.show { display: flex; }
+    .loading-spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255,255,255,0.2);
+      border-top-color: var(--sand-dark);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-overlay p { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .form-section { padding: 24px 20px; border-radius: 14px; }
+      .field-row { grid-template-columns: 1fr; }
+      .confirm-table th { width: 110px; min-width: 100px; font-size: 0.73rem; }
+      .form-nav { flex-direction: column-reverse; }
+      .btn-next, .btn-submit, .btn-back { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADING OVERLAY -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <p>送信しています...</p>
+  </div>
+
+  <!-- HEADER -->
+  <div class="form-header">
+    <div>
+      <a href="lp-mission.html" class="fh-back">← 募集要項に戻る</a>
+    </div>
+    <div class="fh-badge">御立岬プロジェクト × 株式会社ソウルシンクス</div>
+    <h1>応募フォーム</h1>
+    <p>
+      選考前にカジュアルな面談の機会を設けています。<br />
+      「向いているか不安」という方も、まずはご応募ください。
+    </p>
+  </div>
+
+  <!-- STEP BAR -->
+  <nav class="step-bar">
+    <div class="step-bar-inner">
+      <div class="step-item active" id="step-tab-1" onclick="goToStep(1)">
+        <div class="step-dot">1</div>
+        <div class="step-label">基本情報</div>
+      </div>
+      <div class="step-arrow">›</div>
+      <div class="step-item" id="step-tab-2" onclick="goToStep(2)">
+        <div class="step-dot">2</div>
+        <div class="step-label">現在の状況</div>
+      </div>
+      <div class="step-arrow">›</div>
+      <div class="step-item" id="step-tab-3" onclick="goToStep(3)">
+        <div class="step-dot">3</div>
+        <div class="step-label">経験・スキル</div>
+      </div>
+      <div class="step-arrow">›</div>
+      <div class="step-item" id="step-tab-4" onclick="goToStep(4)">
+        <div class="step-dot">4</div>
+        <div class="step-label">志望動機</div>
+      </div>
+      <div class="step-arrow">›</div>
+      <div class="step-item" id="step-tab-5" onclick="goToStep(5)">
+        <div class="step-dot">5</div>
+        <div class="step-label">確認・送信</div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="form-wrap">
+
+    <!-- ======= SECTION 1: 基本情報 ======= -->
+    <div class="form-section active" id="section-1">
+      <div class="fs-header">
+        <div class="fs-step-label">STEP 1 / 5</div>
+        <h2>基本情報</h2>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="name">氏名 <span class="required">必須</span></label>
+          <input type="text" id="name" name="name" placeholder="山田 太郎" autocomplete="name" />
+          <div class="error-msg" id="err-name">氏名を入力してください</div>
+        </div>
+        <div class="field-group">
+          <label for="name_kana">氏名（ふりがな） <span class="required">必須</span></label>
+          <input type="text" id="name_kana" name="name_kana" placeholder="やまだ たろう" />
+          <div class="error-msg" id="err-name_kana">ふりがなを入力してください</div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="age">年齢 <span class="required">必須</span></label>
+          <input type="number" id="age" name="age" placeholder="25" min="18" max="60" />
+          <div class="error-msg" id="err-age">年齢を入力してください</div>
+        </div>
+        <div class="field-group">
+          <label>性別 <span class="optional">任意</span></label>
+          <div class="radio-group">
+            <div class="radio-item" onclick="selectRadio(this, 'gender', '男性')">
+              <input type="radio" name="gender" value="男性" /><div class="radio-mark"></div><span class="radio-text">男性</span>
+            </div>
+            <div class="radio-item" onclick="selectRadio(this, 'gender', '女性')">
+              <input type="radio" name="gender" value="女性" /><div class="radio-mark"></div><span class="radio-text">女性</span>
+            </div>
+            <div class="radio-item" onclick="selectRadio(this, 'gender', '回答しない')">
+              <input type="radio" name="gender" value="回答しない" /><div class="radio-mark"></div><span class="radio-text">回答しない</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="pref">現在の居住地（都道府県） <span class="required">必須</span></label>
+        <select id="pref" name="pref">
+          <option value="">選択してください</option>
+          <option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option>
+          <option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option>
+          <option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option><option>新潟県</option>
+          <option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option>
+          <option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option>
+          <option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option>
+          <option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option>
+          <option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option>
+          <option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option>
+          <option>鹿児島県</option><option>沖縄県</option><option>海外在住</option>
+        </select>
+        <div class="error-msg" id="err-pref">居住地を選択してください</div>
+      </div>
+
+      <div class="field-group">
+        <label for="email">メールアドレス <span class="required">必須</span></label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" autocomplete="email" />
+        <div class="error-msg" id="err-email">正しいメールアドレスを入力してください</div>
+      </div>
+
+      <div class="field-group">
+        <label for="tel">電話番号 <span class="required">必須</span></label>
+        <input type="tel" id="tel" name="tel" placeholder="090-0000-0000" autocomplete="tel" />
+        <div class="error-msg" id="err-tel">電話番号を入力してください</div>
+      </div>
+
+      <div class="form-nav">
+        <div></div>
+        <button class="btn-next" onclick="validateAndNext(1)">次へ →</button>
+      </div>
+    </div>
+
+    <!-- ======= SECTION 2: 現在の状況 ======= -->
+    <div class="form-section" id="section-2">
+      <div class="fs-header">
+        <div class="fs-step-label">STEP 2 / 5</div>
+        <h2>現在の状況</h2>
+      </div>
+
+      <div class="field-group">
+        <label>現在の就業状況 <span class="required">必須</span></label>
+        <div class="radio-group">
+          <div class="radio-item" onclick="selectRadio(this, 'work_status', '会社員（正社員）')">
+            <input type="radio" name="work_status" value="会社員（正社員）" /><div class="radio-mark"></div><span class="radio-text">会社員（正社員）</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'work_status', '会社員（契約・派遣）')">
+            <input type="radio" name="work_status" value="会社員（契約・派遣）" /><div class="radio-mark"></div><span class="radio-text">会社員（契約・派遣）</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'work_status', 'フリーランス・個人事業主')">
+            <input type="radio" name="work_status" value="フリーランス・個人事業主" /><div class="radio-mark"></div><span class="radio-text">フリーランス・個人事業主</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'work_status', 'アルバイト・パート')">
+            <input type="radio" name="work_status" value="アルバイト・パート" /><div class="radio-mark"></div><span class="radio-text">アルバイト・パート</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'work_status', '学生')">
+            <input type="radio" name="work_status" value="学生" /><div class="radio-mark"></div><span class="radio-text">学生</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'work_status', '無職・求職中')">
+            <input type="radio" name="work_status" value="無職・求職中" /><div class="radio-mark"></div><span class="radio-text">無職・求職中</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'work_status', 'その他')">
+            <input type="radio" name="work_status" value="その他" /><div class="radio-mark"></div><span class="radio-text">その他</span>
+          </div>
+        </div>
+        <div class="error-msg" id="err-work_status">就業状況を選択してください</div>
+      </div>
+
+      <div class="field-group">
+        <label for="job_type">現在の職種・業種 <span class="required">必須</span></label>
+        <div class="field-hint">例：営業、マーケティング、デザイナー、など</div>
+        <input type="text" id="job_type" name="job_type" placeholder="営業" />
+        <div class="error-msg" id="err-job_type">職種・業種を入力してください</div>
+      </div>
+
+      <div class="field-group">
+        <label>パソコンを所持していますか？ <span class="required">必須</span></label>
+        <div class="radio-group">
+          <div class="radio-item" onclick="selectRadio(this, 'has_pc', 'はい')">
+            <input type="radio" name="has_pc" value="はい" /><div class="radio-mark"></div><span class="radio-text">はい、持っています</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'has_pc', 'いいえ')">
+            <input type="radio" name="has_pc" value="いいえ" /><div class="radio-mark"></div><span class="radio-text">いいえ</span>
+          </div>
+        </div>
+        <div class="error-msg" id="err-has_pc">選択してください</div>
+      </div>
+
+      <div class="field-group">
+        <label>オンラインミーティングができる環境がありますか？ <span class="required">必須</span></label>
+        <div class="radio-group">
+          <div class="radio-item" onclick="selectRadio(this, 'has_online', 'はい')">
+            <input type="radio" name="has_online" value="はい" /><div class="radio-mark"></div><span class="radio-text">はい、できます</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'has_online', 'いいえ')">
+            <input type="radio" name="has_online" value="いいえ" /><div class="radio-mark"></div><span class="radio-text">いいえ</span>
+          </div>
+        </div>
+        <div class="error-msg" id="err-has_online">選択してください</div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-back" onclick="goToStep(1)">← 戻る</button>
+        <button class="btn-next" onclick="validateAndNext(2)">次へ →</button>
+      </div>
+    </div>
+
+    <!-- ======= SECTION 3: 経験・スキル ======= -->
+    <div class="form-section" id="section-3">
+      <div class="fs-header">
+        <div class="fs-step-label">STEP 3 / 5</div>
+        <h2>経験・スキル</h2>
+      </div>
+
+      <div class="field-group">
+        <label>SNS運用・発信の経験はありますか？ <span class="required">必須</span></label>
+        <div class="radio-group">
+          <div class="radio-item" onclick="selectRadio(this, 'sns_exp', '個人アカウントで日常的に発信している')">
+            <input type="radio" name="sns_exp" value="個人アカウントで日常的に発信している" /><div class="radio-mark"></div><span class="radio-text">個人アカウントで日常的に発信している</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'sns_exp', '仕事でSNS運用をしたことがある')">
+            <input type="radio" name="sns_exp" value="仕事でSNS運用をしたことがある" /><div class="radio-mark"></div><span class="radio-text">仕事でSNS運用をしたことがある</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'sns_exp', 'ほとんど経験はないが興味がある')">
+            <input type="radio" name="sns_exp" value="ほとんど経験はないが興味がある" /><div class="radio-mark"></div><span class="radio-text">ほとんど経験はないが、興味がある</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'sns_exp', '経験なし')">
+            <input type="radio" name="sns_exp" value="経験なし" /><div class="radio-mark"></div><span class="radio-text">経験なし</span>
+          </div>
+        </div>
+        <div class="error-msg" id="err-sns_exp">選択してください</div>
+      </div>
+
+      <div class="field-group">
+        <label>使えるSNS・ツールを教えてください <span class="optional">任意</span></label>
+        <div class="check-group" id="tools-group">
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'Instagram')">
+            <input type="checkbox" name="tools" value="Instagram" /><div class="check-mark"></div><span class="check-text">Instagram</span>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'TikTok')">
+            <input type="checkbox" name="tools" value="TikTok" /><div class="check-mark"></div><span class="check-text">TikTok</span>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'YouTube')">
+            <input type="checkbox" name="tools" value="YouTube" /><div class="check-mark"></div><span class="check-text">YouTube</span>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'X（旧Twitter）')">
+            <input type="checkbox" name="tools" value="X（旧Twitter）" /><div class="check-mark"></div><span class="check-text">X（旧Twitter）</span>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'Canva')">
+            <input type="checkbox" name="tools" value="Canva" /><div class="check-mark"></div><span class="check-text">Canva</span>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'Adobe系（Photoshop・Premiere等）')">
+            <input type="checkbox" name="tools" value="Adobe系（Photoshop・Premiere等）" /><div class="check-mark"></div><span class="check-text">Adobe系（Photoshop・Premiere等）</span>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'CapCut')">
+            <input type="checkbox" name="tools" value="CapCut" /><div class="check-mark"></div><span class="check-text">CapCut</span>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'Googleスプレッドシート・ドキュメント')">
+            <input type="checkbox" name="tools" value="Googleスプレッドシート・ドキュメント" /><div class="check-mark"></div><span class="check-text">Googleスプレッドシート・ドキュメント</span>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this, 'tools', 'Zoom / Google Meet')">
+            <input type="checkbox" name="tools" value="Zoom / Google Meet" /><div class="check-mark"></div><span class="check-text">Zoom / Google Meet</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>イベント企画・運営の経験はありますか？ <span class="optional">任意</span></label>
+        <div class="radio-group">
+          <div class="radio-item" onclick="selectRadio(this, 'event_exp', '仕事で経験あり')">
+            <input type="radio" name="event_exp" value="仕事で経験あり" /><div class="radio-mark"></div><span class="radio-text">仕事で経験あり</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'event_exp', '個人・ボランティアで経験あり')">
+            <input type="radio" name="event_exp" value="個人・ボランティアで経験あり" /><div class="radio-mark"></div><span class="radio-text">個人・ボランティアで経験あり</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'event_exp', '経験なし')">
+            <input type="radio" name="event_exp" value="経験なし" /><div class="radio-mark"></div><span class="radio-text">経験なし</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>地方移住・地域おこしに関わった経験はありますか？ <span class="optional">任意</span></label>
+        <div class="radio-group">
+          <div class="radio-item" onclick="selectRadio(this, 'migration_exp', '地方移住の経験あり')">
+            <input type="radio" name="migration_exp" value="地方移住の経験あり" /><div class="radio-mark"></div><span class="radio-text">地方移住の経験あり</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'migration_exp', '地域おこし・まちづくりに関わった経験あり')">
+            <input type="radio" name="migration_exp" value="地域おこし・まちづくりに関わった経験あり" /><div class="radio-mark"></div><span class="radio-text">地域おこし・まちづくりに関わった経験あり</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'migration_exp', 'どちらもなし')">
+            <input type="radio" name="migration_exp" value="どちらもなし" /><div class="radio-mark"></div><span class="radio-text">どちらもなし</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-back" onclick="goToStep(2)">← 戻る</button>
+        <button class="btn-next" onclick="validateAndNext(3)">次へ →</button>
+      </div>
+    </div>
+
+    <!-- ======= SECTION 4: 志望動機 ======= -->
+    <div class="form-section" id="section-4">
+      <div class="fs-header">
+        <div class="fs-step-label">STEP 4 / 5</div>
+        <h2>意向・志望動機</h2>
+      </div>
+
+      <div class="field-group">
+        <label>希望する勤務開始時期 <span class="required">必須</span></label>
+        <div class="radio-group">
+          <div class="radio-item" onclick="selectRadio(this, 'start_date', '2025年4月1日')">
+            <input type="radio" name="start_date" value="2025年4月1日" /><div class="radio-mark"></div><span class="radio-text">2025年4月1日</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'start_date', '2025年5月1日')">
+            <input type="radio" name="start_date" value="2025年5月1日" /><div class="radio-mark"></div><span class="radio-text">2025年5月1日</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'start_date', '2025年6月1日')">
+            <input type="radio" name="start_date" value="2025年6月1日" /><div class="radio-mark"></div><span class="radio-text">2025年6月1日</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'start_date', '相談したい')">
+            <input type="radio" name="start_date" value="相談したい" /><div class="radio-mark"></div><span class="radio-text">相談したい</span>
+          </div>
+        </div>
+        <div class="error-msg" id="err-start_date">希望勤務開始時期を選択してください</div>
+      </div>
+
+      <div class="field-group">
+        <label for="motivation">この求人に応募した理由・志望動機 <span class="required">必須</span></label>
+        <div class="field-hint">200〜400文字程度を目安にご記入ください</div>
+        <textarea id="motivation" name="motivation" placeholder="芦北町の地域活性化に関わりたいと思った理由、ソウルシンクスに応募した理由をお書きください。" oninput="updateCharCount('motivation', 200, 400)"></textarea>
+        <div class="char-counter" id="cc-motivation">0 / 400文字</div>
+        <div class="error-msg" id="err-motivation">志望動機を200文字以上入力してください</div>
+      </div>
+
+      <div class="field-group">
+        <label for="ashikita_passion">芦北町・地域活性化への想いや関心 <span class="optional">任意</span></label>
+        <div class="field-hint">100〜300文字程度を目安にご記入ください</div>
+        <textarea id="ashikita_passion" name="ashikita_passion" placeholder="芦北町や地域活性化に対する想いや関心があればお書きください。" style="min-height: 100px;" oninput="updateCharCount('ashikita_passion', 0, 300)"></textarea>
+        <div class="char-counter" id="cc-ashikita_passion">0 / 300文字</div>
+      </div>
+
+      <div class="field-group">
+        <label>副業・兼業をしている、または予定していますか？ <span class="optional">任意</span></label>
+        <div class="radio-group">
+          <div class="radio-item" onclick="selectRadio(this, 'side_job', '現在している')">
+            <input type="radio" name="side_job" value="現在している" /><div class="radio-mark"></div><span class="radio-text">現在している</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'side_job', '今後する予定がある')">
+            <input type="radio" name="side_job" value="今後する予定がある" /><div class="radio-mark"></div><span class="radio-text">今後する予定がある</span>
+          </div>
+          <div class="radio-item" onclick="selectRadio(this, 'side_job', '特にない')">
+            <input type="radio" name="side_job" value="特にない" /><div class="radio-mark"></div><span class="radio-text">特にない</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="free_note">その他、伝えておきたいこと <span class="optional">任意</span></label>
+        <textarea id="free_note" name="free_note" placeholder="自由にご記入ください。" style="min-height: 80px;"></textarea>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-back" onclick="goToStep(3)">← 戻る</button>
+        <button class="btn-next" onclick="validateAndNext(4)">確認画面へ →</button>
+      </div>
+    </div>
+
+    <!-- ======= SECTION 5: 確認 ======= -->
+    <div class="form-section" id="section-confirm">
+      <div class="fs-header">
+        <div class="fs-step-label">STEP 5 / 5</div>
+        <h2>入力内容の確認</h2>
+      </div>
+
+      <table class="confirm-table" id="confirm-table"></table>
+
+      <div class="field-group" style="margin-top: 28px;">
+        <label>個人情報の取り扱いについて <span class="required">必須</span></label>
+        <div class="privacy-box">
+          株式会社ソウルシンクスは、ご応募いただいた個人情報を採用選考の目的のみに使用し、第三者に提供することはありません。
+          選考終了後、ご提供いただいた個人情報は適切な方法で破棄いたします。
+          本フォームにご入力いただく情報は、SSL（暗号化通信）により安全に送信されます。
+          個人情報の取り扱いに関するご質問は、株式会社ソウルシンクスまでお問い合わせください。
+        </div>
+        <div class="check-item" onclick="toggleCheck(this, 'privacy', '同意する')" id="privacy-check">
+          <input type="checkbox" name="privacy" value="同意する" /><div class="check-mark"></div>
+          <span class="check-text">株式会社ソウルシンクスの個人情報取り扱い方針に同意する</span>
+        </div>
+        <div class="error-msg" id="err-privacy">個人情報の取り扱いに同意してください</div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-back" onclick="goToStep(4)">← 戻る</button>
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">送信する →</button>
+      </div>
+    </div>
+
+    <!-- ======= SUCCESS ======= -->
+    <div class="form-section" id="section-success">
+      <div class="success-icon">✓</div>
+      <h2>応募が完了しました。</h2>
+      <p>
+        ご応募いただき、ありがとうございます。<br />
+        ご入力いただいたメールアドレス宛に確認メールをお送りしました。<br /><br />
+        担当者より2〜3営業日以内にご連絡いたします。<br />
+        しばらくお待ちください。
+      </p>
+      <a href="lp-mission.html" class="back-to-top">← 募集要項に戻る</a>
+    </div>
+
+  </div>
+
+  <script>
+    // ── STATE ──
+    let currentStep = 1;
+    const formData = {};
+
+    // ── STEP NAVIGATION ──
+    function goToStep(step) {
+      const prevSection = document.querySelector('.form-section.active');
+      if (prevSection) prevSection.classList.remove('active');
+
+      if (step === 5) {
+        document.getElementById('section-confirm').classList.add('active');
+        buildConfirmTable();
+      } else {
+        document.getElementById('section-' + step).classList.add('active');
+      }
+
+      // Update step tabs
+      for (let i = 1; i <= 5; i++) {
+        const tab = document.getElementById('step-tab-' + i);
+        if (!tab) continue;
+        tab.classList.remove('active', 'done');
+        if (i < step) tab.classList.add('done');
+        else if (i === step) tab.classList.add('active');
+      }
+
+      currentStep = step;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── RADIO SELECT ──
+    function selectRadio(el, name, value) {
+      const group = el.closest('.radio-group');
+      group.querySelectorAll('.radio-item').forEach(item => item.classList.remove('selected'));
+      el.classList.add('selected');
+      el.querySelector('input[type="radio"]').checked = true;
+      formData[name] = value;
+      const errEl = document.getElementById('err-' + name);
+      if (errEl) { errEl.classList.remove('show'); }
+    }
+
+    // ── CHECKBOX TOGGLE ──
+    function toggleCheck(el, name, value) {
+      el.classList.toggle('selected');
+      const cb = el.querySelector('input[type="checkbox"]');
+      cb.checked = !cb.checked;
+      if (!formData[name]) formData[name] = [];
+      if (cb.checked) {
+        if (!formData[name].includes(value)) formData[name].push(value);
+      } else {
+        formData[name] = formData[name].filter(v => v !== value);
+      }
+    }
+
+    // ── CHAR COUNTER ──
+    function updateCharCount(id, min, max) {
+      const ta = document.getElementById(id);
+      const cc = document.getElementById('cc-' + id);
+      const len = ta.value.length;
+      cc.textContent = len + ' / ' + max + '文字';
+      cc.classList.remove('warn', 'over');
+      if (len > max) cc.classList.add('over');
+      else if (len >= max * 0.85) cc.classList.add('warn');
+    }
+
+    // ── VALIDATION ──
+    function showError(id, show) {
+      const el = document.getElementById('err-' + id);
+      if (!el) return;
+      el.classList.toggle('show', show);
+      const input = document.getElementById(id);
+      if (input) input.classList.toggle('error', show);
+    }
+
+    function validateStep(step) {
+      let valid = true;
+
+      if (step === 1) {
+        const name = document.getElementById('name').value.trim();
+        const nameKana = document.getElementById('name_kana').value.trim();
+        const age = document.getElementById('age').value;
+        const pref = document.getElementById('pref').value;
+        const email = document.getElementById('email').value.trim();
+        const tel = document.getElementById('tel').value.trim();
+
+        if (!name) { showError('name', true); valid = false; } else { showError('name', false); formData.name = name; }
+        if (!nameKana) { showError('name_kana', true); valid = false; } else { showError('name_kana', false); formData.name_kana = nameKana; }
+        if (!age) { showError('age', true); valid = false; } else { showError('age', false); formData.age = age; }
+        if (!pref) { showError('pref', true); valid = false; } else { showError('pref', false); formData.pref = pref; }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('email', true); valid = false; } else { showError('email', false); formData.email = email; }
+        if (!tel) { showError('tel', true); valid = false; } else { showError('tel', false); formData.tel = tel; }
+      }
+
+      if (step === 2) {
+        if (!formData.work_status) { showError('work_status', true); valid = false; } else { showError('work_status', false); }
+        const jobType = document.getElementById('job_type').value.trim();
+        if (!jobType) { showError('job_type', true); valid = false; } else { showError('job_type', false); formData.job_type = jobType; }
+        if (!formData.has_pc) { showError('has_pc', true); valid = false; } else { showError('has_pc', false); }
+        if (!formData.has_online) { showError('has_online', true); valid = false; } else { showError('has_online', false); }
+      }
+
+      if (step === 3) {
+        if (!formData.sns_exp) { showError('sns_exp', true); valid = false; } else { showError('sns_exp', false); }
+      }
+
+      if (step === 4) {
+        if (!formData.start_date) { showError('start_date', true); valid = false; } else { showError('start_date', false); }
+        const motivation = document.getElementById('motivation').value.trim();
+        if (motivation.length < 200) { showError('motivation', true); valid = false; } else { showError('motivation', false); formData.motivation = motivation; }
+        formData.ashikita_passion = document.getElementById('ashikita_passion').value.trim();
+        formData.free_note = document.getElementById('free_note').value.trim();
+      }
+
+      return valid;
+    }
+
+    function validateAndNext(currentStep) {
+      if (!validateStep(currentStep)) {
+        const firstError = document.querySelector('.error-msg.show');
+        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      goToStep(currentStep + 1);
+    }
+
+    // ── CONFIRM TABLE ──
+    function buildConfirmTable() {
+      const rows = [
+        ['氏名', formData.name || ''],
+        ['氏名（ふりがな）', formData.name_kana || ''],
+        ['年齢', formData.age ? formData.age + '歳' : ''],
+        ['性別', formData.gender || '（未回答）'],
+        ['居住地', formData.pref || ''],
+        ['メールアドレス', formData.email || ''],
+        ['電話番号', formData.tel || ''],
+        ['就業状況', formData.work_status || ''],
+        ['職種・業種', formData.job_type || ''],
+        ['PC所持', formData.has_pc || ''],
+        ['オンラインMTG環境', formData.has_online || ''],
+        ['SNS経験', formData.sns_exp || ''],
+        ['使えるツール', (formData.tools && formData.tools.length ? formData.tools.join('、') : '（なし）')],
+        ['イベント経験', formData.event_exp || '（未回答）'],
+        ['移住・地域おこし経験', formData.migration_exp || '（未回答）'],
+        ['希望勤務開始', formData.start_date || ''],
+        ['志望動機', formData.motivation || ''],
+        ['芦北への想い', formData.ashikita_passion || '（なし）'],
+        ['副業・兼業', formData.side_job || '（未回答）'],
+        ['その他', formData.free_note || '（なし）'],
+      ];
+      const table = document.getElementById('confirm-table');
+      table.innerHTML = rows.map(([th, td]) =>
+        `<tr><th>${th}</th><td>${td.replace(/\n/g, '<br />')}</td></tr>`
+      ).join('');
+    }
+
+    // ── SUBMIT ──
+    async function submitForm() {
+      // Check privacy agreement
+      const privacyChecked = document.getElementById('privacy-check').classList.contains('selected');
+      if (!privacyChecked) {
+        document.getElementById('err-privacy').classList.add('show');
+        return;
+      }
+      document.getElementById('err-privacy').classList.remove('show');
+
+      // Build message
+      const message = buildChatworkMessage();
+
+      // Show loading
+      document.getElementById('loadingOverlay').classList.add('show');
+      document.getElementById('submitBtn').disabled = true;
+
+      try {
+        // Send to backend handler
+        const response = await fetch('form-handler.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...formData, chatwork_message: message })
+        });
+
+        if (response.ok) {
+          showSuccess();
+        } else {
+          // Fallback: show mailto link if backend unavailable
+          fallbackMailto();
+        }
+      } catch (err) {
+        // Backend not available — fallback
+        fallbackMailto();
+      } finally {
+        document.getElementById('loadingOverlay').classList.remove('show');
+      }
+    }
+
+    function buildChatworkMessage() {
+      const tools = formData.tools && formData.tools.length ? formData.tools.join('、') : 'なし';
+      return `[info][title]【御立岬PJ】新規応募が届きました[/title]
+受付日時: ${new Date().toLocaleString('ja-JP')}
+
+■ 基本情報
+氏名: ${formData.name || ''} (${formData.name_kana || ''})
+年齢: ${formData.age || ''}歳
+性別: ${formData.gender || '未回答'}
+居住地: ${formData.pref || ''}
+メール: ${formData.email || ''}
+電話: ${formData.tel || ''}
+
+■ 現在の状況
+就業状況: ${formData.work_status || ''}
+職種・業種: ${formData.job_type || ''}
+PC所持: ${formData.has_pc || ''}
+オンラインMTG環境: ${formData.has_online || ''}
+
+■ 経験・スキル
+SNS経験: ${formData.sns_exp || ''}
+使えるツール: ${tools}
+イベント経験: ${formData.event_exp || '未回答'}
+移住・地域おこし経験: ${formData.migration_exp || '未回答'}
+
+■ 志望動機
+希望勤務開始: ${formData.start_date || ''}
+副業・兼業: ${formData.side_job || '未回答'}
+
+志望動機:
+${formData.motivation || ''}
+
+芦北への想い:
+${formData.ashikita_passion || 'なし'}
+
+その他:
+${formData.free_note || 'なし'}
+[/info]`;
+    }
+
+    function showSuccess() {
+      document.querySelector('.form-section.active').classList.remove('active');
+      document.getElementById('section-success').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function fallbackMailto() {
+      document.getElementById('loadingOverlay').classList.remove('show');
+      const subject = encodeURIComponent('【御立岬PJ】応募: ' + (formData.name || ''));
+      const body = encodeURIComponent(buildChatworkMessage().replace(/\[.*?\]/g, ''));
+      const mailtoLink = 'mailto:?subject=' + subject + '&body=' + body;
+      const a = document.createElement('a');
+      a.href = mailtoLink;
+      a.click();
+      alert('フォームハンドラーが設定されていないため、メールクライアントを開きます。\n設定後は自動でChatworkに届きます。');
+    }
+  </script>
+</body>
+</html>

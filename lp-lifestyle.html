@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>熊本の海辺の町に住みながら、町を変える仕事。| 御立岬PJ × ソウルシンクス</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:       #0A1628;
+      --navy-mid:   #152238;
+      --ocean-dark: #023E8A;
+      --ocean:      #0077B6;
+      --ocean-mid:  #0096C7;
+      --sky:        #ADE8F4;
+      --sky-pale:   #E8F7FC;
+      --sand:       #F4E4C1;
+      --sand-dark:  #E9C46A;
+      --green:      #1B4332;
+      --green-mid:  #2D6A4F;
+      --warm:       #F4A261;
+      --sunset:     #E76F51;
+      --cream:      #FEFAF4;
+      --white:      #FFFFFF;
+      --gray-light: #F7F8FA;
+      --gray:       #8A96A3;
+      --text-dark:  #1A2332;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(160deg,
+          rgba(2,62,138,0.72) 0%,
+          rgba(0,150,199,0.4) 45%,
+          rgba(27,67,50,0.65) 100%),
+        url('https://images.unsplash.com/photo-1490077476659-095159692ab5?w=1600&q=90') center / cover no-repeat;
+      background-attachment: fixed;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--cream));
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: clamp(80px, 14vw, 160px) clamp(24px, 6vw, 80px);
+      max-width: 860px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      padding: 8px 20px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(6px);
+    }
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--white);
+      margin-bottom: 24px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .hero h1 .accent {
+      display: inline;
+      background: linear-gradient(90deg, var(--sand-dark), var(--warm));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.8);
+      font-weight: 300;
+      line-height: 2;
+      margin-bottom: 44px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.78rem;
+      padding: 7px 16px;
+      border-radius: 50px;
+    }
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-mid));
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 16px 38px;
+      border-radius: 50px;
+      box-shadow: 0 8px 30px rgba(0,119,182,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(0,119,182,0.6);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+      text-decoration: none;
+      padding: 16px 28px;
+      border-radius: 50px;
+      transition: background 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 220px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.35);
+      border-bottom: 2px solid rgba(255,255,255,0.35);
+      transform: rotate(45deg);
+      animation: arrowBounce 2s ease-in-out infinite;
+    }
+    @keyframes arrowBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
+      50% { transform: rotate(45deg) translateY(6px); opacity: 0.9; }
+    }
+
+    /* ── MORNING SECTION ── */
+    .sec-morning {
+      background: var(--cream);
+      padding: clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px);
+    }
+    .sec-morning .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .morning-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .morning-text .overline {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--ocean);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .morning-text h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .morning-text p {
+      font-size: 0.95rem;
+      color: #4A5568;
+      line-height: 2.1;
+    }
+    .morning-scenes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .scene-card {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3/4;
+    }
+    .scene-card:first-child {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+    .scene-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .scene-card:hover img { transform: scale(1.06); }
+    .scene-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.65) 0%, transparent 55%);
+    }
+    .scene-label {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      z-index: 2;
+      color: white;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    /* ── LIFE STRIP ── */
+    .life-strip {
+      background: linear-gradient(135deg, var(--ocean-dark), var(--ocean-mid));
+      padding: 48px clamp(24px, 6vw, 80px);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      overflow: hidden;
+    }
+    .life-strip-items {
+      display: flex;
+      gap: 0;
+      max-width: 1000px;
+      width: 100%;
+    }
+    .ls-item {
+      flex: 1;
+      text-align: center;
+      padding: 24px 20px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .ls-item:last-child { border-right: none; }
+    .ls-item .ls-icon { font-size: 2rem; margin-bottom: 10px; }
+    .ls-item .ls-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--sand-dark);
+      margin-bottom: 6px;
+    }
+    .ls-item .ls-desc {
+      font-size: 0.74rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    /* ── JOB SECTION ── */
+    .sec-job {
+      background: var(--white);
+      padding: clamp(60px, 10vw, 120px) clamp(24px, 6vw, 80px);
+    }
+    .sec-job .container { max-width: 1000px; margin: 0 auto; }
+    .overline {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--ocean);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .sec-job h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .sec-job .job-intro {
+      font-size: 0.98rem;
+      color: var(--gray);
+      line-height: 2;
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+    .job-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .job-card {
+      background: var(--gray-light);
+      border-radius: 20px;
+      padding: 28px 24px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .job-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,119,182,0.1);
+    }
+    .job-card .jc-emoji { font-size: 2rem; margin-bottom: 14px; }
+    .job-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .job-card p {
+      font-size: 0.83rem;
+      color: var(--gray);
+      line-height: 1.9;
+    }
+    .freedom-box {
+      margin-top: 40px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
+      border-radius: 20px;
+      padding: 36px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: white;
+    }
+    .freedom-box .fb-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .freedom-box h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--sand-dark);
+    }
+    .freedom-box p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+    }
+
+    /* ── WHO SECTION ── */
+    .sec-who {
+      background: var(--cream);
+      padding: clamp(60px, 10vw, 120px) clamp(24px, 6vw, 80px);
+    }
+    .sec-who .container { max-width: 800px; margin: 0 auto; }
+    .sec-who h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 48px;
+    }
+    .who-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .who-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .who-card:hover {
+      box-shadow: 0 8px 28px rgba(0,119,182,0.1);
+      transform: translateX(6px);
+    }
+    .who-card .wc-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--sky-pale), var(--sky));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .who-card .wc-text {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+    .req-simple {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .req-simple h3 {
+      font-size: 0.78rem;
+      color: var(--gray);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .req-simple .req-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #F0F2F5;
+      font-size: 0.9rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+    .req-simple .req-row:last-child { border-bottom: none; }
+    .req-simple .req-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-mid));
+      color: white;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── SALARY SECTION ── */
+    .sec-salary {
+      background: var(--navy);
+      padding: clamp(60px, 10vw, 120px) clamp(24px, 6vw, 80px);
+    }
+    .sec-salary .container { max-width: 900px; margin: 0 auto; }
+    .sec-salary h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 48px;
+    }
+    .salary-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .sv-main {
+      background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sv-main .sv-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .sv-main .sv-amount {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--sand-dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .sv-main .sv-sub {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .sv-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sv-perk {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .sv-perk .sp-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .sv-perk .sp-info .sp-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .sv-perk .sp-info .sp-val {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .sv-total {
+      background: rgba(233,196,106,0.1);
+      border: 2px solid rgba(233,196,106,0.4);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .sv-total .svt-label {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .sv-total .svt-val {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.6rem;
+      color: var(--sand-dark);
+      font-weight: 900;
+    }
+    .salary-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.9;
+      margin-bottom: 36px;
+    }
+    .ceo-quote {
+      background: rgba(255,255,255,0.04);
+      border-left: 3px solid var(--sand-dark);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+    }
+    .ceo-quote p {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
+      font-weight: 700;
+    }
+    .ceo-quote span {
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 10px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+    }
+
+    .work-table {
+      margin-top: 36px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .work-table th, .work-table td {
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.88rem;
+    }
+    .work-table th {
+      color: rgba(255,255,255,0.45);
+      font-weight: 400;
+      white-space: nowrap;
+      width: 160px;
+    }
+    .work-table td { color: rgba(255,255,255,0.88); font-weight: 500; }
+
+    /* ── CTA SECTION ── */
+    .sec-cta {
+      position: relative;
+      padding: clamp(80px, 12vw, 150px) clamp(24px, 6vw, 80px);
+      background:
+        linear-gradient(to bottom, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0.9) 100%),
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=85') center / cover no-repeat;
+      background-attachment: fixed;
+      text-align: center;
+    }
+    .sec-cta .container { max-width: 680px; margin: 0 auto; }
+    .sec-cta h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+    .sec-cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.9;
+      margin-bottom: 48px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .btn-cta-apply {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-mid));
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 44px;
+      border-radius: 50px;
+      box-shadow: 0 10px 40px rgba(0,119,182,0.5);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-cta-apply:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px rgba(0,119,182,0.6);
+    }
+    .btn-cta-mission {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      text-decoration: none;
+      padding: 18px 32px;
+      border-radius: 50px;
+      transition: background 0.25s;
+    }
+    .btn-cta-mission:hover { background: rgba(255,255,255,0.16); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060D18;
+      padding: 32px clamp(24px, 6vw, 80px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer .f-org {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+    footer .f-switch a {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    footer .f-switch a:hover { color: white; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .morning-layout { grid-template-columns: 1fr; }
+      .morning-scenes { order: -1; grid-template-columns: 1fr 1fr; }
+      .job-grid { grid-template-columns: 1fr; }
+      .salary-visual { grid-template-columns: 1fr; }
+      .life-strip-items { flex-wrap: wrap; }
+      .ls-item { min-width: 45%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .ls-item:last-child { border-bottom: none; }
+      .freedom-box { flex-direction: column; text-align: center; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .morning-scenes { grid-template-columns: 1fr; }
+      .scene-card:first-child { aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span>🌊</span> LIFESTYLE TYPE — 御立岬プロジェクト
+      </div>
+      <h1>
+        熊本の<span class="accent">海辺の町</span>に住みながら、<br />
+        町を変える仕事。
+      </h1>
+      <p class="hero-sub">
+        朝起きたら、目の前に海が広がる。<br />
+        源泉かけ流しの温泉が、歩いて行ける距離にある。<br />
+        それが、この仕事の「日常」です。
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">株式会社ソウルシンクス</span>
+        <span class="hero-tag">熊本県芦北町 移住</span>
+        <span class="hero-tag">20〜30代歓迎</span>
+        <span class="hero-tag">SNS発信 × 地域活性化</span>
+      </div>
+      <div class="hero-btns">
+        <a href="form.html" class="btn-primary">応募する →</a>
+        <a href="#morning" class="btn-ghost">もっと見る ↓</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      SCROLL
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ===================== MORNING ===================== -->
+  <section class="sec-morning" id="morning">
+    <div class="container">
+      <div class="morning-layout">
+        <div class="morning-text reveal-scale">
+          <p class="overline">A DAY IN ASHIKITA</p>
+          <h2>こんな働き方、<br />想像したことありますか？</h2>
+          <p>
+            朝、海から差し込む光で目が覚める。<br />
+            ランニングしながら漁港に立ち寄って、地元の漁師さんと「おはよう」と挨拶を交わす。<br />
+            夕方はキャンプ場でSNS用の動画を撮影して、温泉に浸かってから帰る。<br /><br />
+            「何時から何時まで出勤」という縛りはありません。<br />
+            この町を、自分のフィールドとして動き回ってください。
+          </p>
+        </div>
+        <div class="morning-scenes">
+          <div class="scene-card reveal" style="transition-delay: 0.1s">
+            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80" alt="芦北の海" loading="lazy" />
+            <div class="scene-label">不知火海の朝</div>
+          </div>
+          <div class="scene-card reveal" style="transition-delay: 0.2s">
+            <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80" alt="温泉" loading="lazy" />
+            <div class="scene-label">源泉かけ流しの温泉</div>
+          </div>
+          <div class="scene-card reveal" style="transition-delay: 0.3s">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" alt="キャンプ" loading="lazy" />
+            <div class="scene-label">海を望むキャンプ場</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LIFE STRIP ===================== -->
+  <div class="life-strip">
+    <div class="life-strip-items">
+      <div class="ls-item reveal">
+        <div class="ls-icon">🌊</div>
+        <div class="ls-title">不知火海を一望</div>
+        <div class="ls-desc">毎日が絶景。都市では<br />味わえない暮らし。</div>
+      </div>
+      <div class="ls-item reveal" style="transition-delay: 0.1s">
+        <div class="ls-icon">♨️</div>
+        <div class="ls-title">温泉が歩いて行ける</div>
+        <div class="ls-desc">源泉かけ流し温泉が<br />日常になる。</div>
+      </div>
+      <div class="ls-item reveal" style="transition-delay: 0.2s">
+        <div class="ls-icon">🏕</div>
+        <div class="ls-title">キャンプ場が職場</div>
+        <div class="ls-desc">海を見ながら仕事する<br />贅沢な環境。</div>
+      </div>
+      <div class="ls-item reveal" style="transition-delay: 0.3s">
+        <div class="ls-icon">🍊</div>
+        <div class="ls-title">芦北のみかん・海産物</div>
+        <div class="ls-desc">地元産の新鮮な食が<br />毎日の食卓に並ぶ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== JOB ===================== -->
+  <section class="sec-job">
+    <div class="container">
+      <p class="overline reveal">WHAT YOU DO</p>
+      <h2 class="reveal">仕事内容</h2>
+      <p class="job-intro reveal">
+        あなたにお願いしたいのは、ただ一つ。<br />
+        <strong>「この町の良さを、外の世界に届けること。」</strong><br />
+        本部（関東）と連携しながら、現地で動かしていく仕事です。
+      </p>
+
+      <div class="job-grid">
+        <div class="job-card reveal" style="transition-delay: 0.1s">
+          <div class="jc-emoji">📸</div>
+          <h3>SNSで町の魅力を発信する</h3>
+          <p>写真・動画・テキスト。芦北の四季、海、温泉、人を、あなたの感性で切り取って世界に届ける。経験不問、やってみたい気持ちが大事。</p>
+        </div>
+        <div class="job-card reveal" style="transition-delay: 0.2s">
+          <div class="jc-emoji">🎪</div>
+          <h3>毎月のイベントを企画・運営する</h3>
+          <p>月1回のイベントを企画して現地で形にする。役場・キャンプ場・道の駅のスタッフと一緒に、町の賑わいを作っていく仕事。</p>
+        </div>
+        <div class="job-card reveal" style="transition-delay: 0.3s">
+          <div class="jc-emoji">🤝</div>
+          <h3>地元の人たちと顔なじみになる</h3>
+          <p>役場の担当者、地元のお店、観光施設のスタッフ。毎日顔を合わせながら「この人と一緒にやりたい」という関係を作っていく。</p>
+        </div>
+        <div class="job-card reveal" style="transition-delay: 0.4s">
+          <div class="jc-emoji">💡</div>
+          <h3>観光客が来る仕組みを本部と一緒に考える</h3>
+          <p>本部（関東）とオンラインMTGで戦略を共有し、現地で実行。月1〜2回は本部スタッフが現地を訪問して一緒に動く機会もあります。</p>
+        </div>
+      </div>
+
+      <div class="freedom-box reveal">
+        <div class="fb-icon">🗺</div>
+        <div>
+          <h3>「時間の縛り」はありません</h3>
+          <p>「何時から何時まで出勤」という固定時間はありません。この町を自分のフィールドにして、自分のペースで動いてください。地元の人たちと信頼関係を作り、現地でしか気づけないことを拾い上げていく。それがあなたの仕事です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHO ===================== -->
+  <section class="sec-who">
+    <div class="container">
+      <p class="overline reveal">WHO WE WANT</p>
+      <h2 class="reveal">こんな人に来てほしい</h2>
+
+      <div class="who-cards">
+        <div class="who-card reveal" style="transition-delay: 0.05s">
+          <div class="wc-icon">✈️</div>
+          <div class="wc-text">旅が好き、移住・地方暮らしに興味がある</div>
+        </div>
+        <div class="who-card reveal" style="transition-delay: 0.1s">
+          <div class="wc-icon">📱</div>
+          <div class="wc-text">SNSを使った発信が得意、またはやってみたい</div>
+        </div>
+        <div class="who-card reveal" style="transition-delay: 0.15s">
+          <div class="wc-icon">😊</div>
+          <div class="wc-text">人と話すのが好き、初対面でもすぐ打ち解けられる</div>
+        </div>
+        <div class="who-card reveal" style="transition-delay: 0.2s">
+          <div class="wc-icon">🧭</div>
+          <div class="wc-text">自分で考えて動けるが、チームの方針に沿って動くことも得意</div>
+        </div>
+        <div class="who-card reveal" style="transition-delay: 0.25s">
+          <div class="wc-icon">🌱</div>
+          <div class="wc-text">「給料より経験・ライフスタイル」で選べる（20〜30代歓迎）</div>
+        </div>
+      </div>
+
+      <div class="req-simple reveal">
+        <h3>必須条件</h3>
+        <div class="req-row">
+          <div class="req-check">✓</div>
+          パソコンを所持していること
+        </div>
+        <div class="req-row">
+          <div class="req-check">✓</div>
+          オンラインでのミーティングができる環境があること
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SALARY ===================== -->
+  <section class="sec-salary">
+    <div class="container">
+      <p class="overline reveal" style="color: var(--sand-dark);">COMPENSATION</p>
+      <h2 class="reveal">報酬・待遇</h2>
+
+      <div class="salary-visual reveal">
+        <div class="sv-main">
+          <div class="sv-label">MONTHLY SALARY</div>
+          <div class="sv-amount">150,000円</div>
+          <div class="sv-sub">手取り約 120,000円 / 月</div>
+        </div>
+        <div class="sv-perks">
+          <div class="sv-perk">
+            <div class="sp-icon">🏠</div>
+            <div class="sp-info">
+              <div class="sp-name">居住費</div>
+              <div class="sp-val">全額会社負担（60,000円相当）</div>
+            </div>
+          </div>
+          <div class="sv-perk">
+            <div class="sp-icon">🚐</div>
+            <div class="sp-info">
+              <div class="sp-name">公用車（軽バン）</div>
+              <div class="sp-val">無償貸与</div>
+            </div>
+          </div>
+          <div class="sv-perk">
+            <div class="sp-icon">⛽</div>
+            <div class="sp-info">
+              <div class="sp-name">ガソリン代</div>
+              <div class="sp-val">全額支給</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sv-total reveal">
+        <div class="svt-label">生活サポートを含む実質月収</div>
+        <div class="svt-val">月 約 210,000円相当</div>
+      </div>
+
+      <p class="salary-note reveal">
+        家賃ゼロ・車ゼロ・ガソリンゼロ。手取り12万円が、そのままほぼ全額「自分のお金」になります。
+        芦北町の物価は東京の6〜7割。実質的な生活水準は、都市部の給与と遜色ありません。
+      </p>
+
+      <div class="ceo-quote reveal">
+        <p>「独身だったら自分が行きたかった」<br />と代表が本気で言っています。</p>
+        <span>— 株式会社ソウルシンクス 代表</span>
+      </div>
+
+      <table class="work-table reveal">
+        <tr><th>雇用形態</th><td>契約社員（実績に応じて正社員登用あり）</td></tr>
+        <tr><th>勤務地</th><td>熊本県芦北町（移住・常駐）</td></tr>
+        <tr><th>滞在条件</th><td>月15日以上の現地滞在</td></tr>
+        <tr><th>期間</th><td>3年間（原則）</td></tr>
+        <tr><th>勤務開始</th><td>2025年4月〜6月（相談可）</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="sec-cta">
+    <div class="container">
+      <h2 class="reveal">まずは、<br />話を聞いてみてください。</h2>
+      <p class="reveal">
+        応募フォームに入力するだけ。<br />
+        選考の前に、オンラインでカジュアルにお話しする機会を設けています。<br />
+        「自分に向いているかどうか不安」という方も大歓迎です。
+      </p>
+      <div class="cta-buttons reveal">
+        <a href="form.html" class="btn-cta-apply">応募フォームへ →</a>
+        <a href="lp-mission.html" class="btn-cta-mission">ミッション版を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="f-org">
+      株式会社ソウルシンクス ／ 御立岬プロジェクト<br />
+      <span style="font-size:0.7rem; color: rgba(255,255,255,0.2);">熊本県芦北町 地域活性化プロジェクト</span>
+    </div>
+    <div class="f-switch">
+      <a href="lp-mission.html">ミッション型LPへ切り替え →</a>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal, .reveal-scale');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
