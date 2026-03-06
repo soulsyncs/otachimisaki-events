@@ -75,7 +75,7 @@
           rgba(10,22,40,0.4) 40%,
           rgba(10,22,40,0.85) 75%,
           rgba(10,22,40,1) 100%),
-        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=90') center / cover no-repeat;
+        url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1600&q=90') center / cover no-repeat;
       background-attachment: fixed;
     }
     .hero-inner {
@@ -541,7 +541,8 @@
       font-size: 0.85rem;
       text-align: center;
     }
-    .salary-extra-item .sei-icon { font-size: 1.4rem; margin-bottom: 4px; }
+    .salary-extra-item .sei-icon-wrap { margin-bottom: 6px; opacity: 0.85; }
+    .salary-extra-item .sei-icon-wrap svg { stroke: var(--sand-dark); }
     .salary-extra-item .sei-label { font-weight: 500; }
     .salary-extra-item .sei-note { font-size: 0.72rem; color: rgba(255,255,255,0.6); }
 
@@ -594,7 +595,9 @@
 
     /* ── CTA SECTION ── */
     .sec-cta {
-      background: var(--navy);
+      background:
+        linear-gradient(to bottom, rgba(10,22,40,0.7) 0%, rgba(10,22,40,0.95) 100%),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=90') center / cover no-repeat;
       padding: clamp(40px, 8vw, 100px) clamp(24px, 6vw, 80px) clamp(80px, 12vw, 140px);
     }
     .cta-box {
@@ -787,7 +790,9 @@
       </div>
 
       <div class="position-box reveal">
-        <div class="pb-icon">🗺</div>
+        <div style="flex-shrink:0;width:80px;height:80px;border-radius:12px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=200&q=80" alt="芦北の海" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
         <div>
           <h3>あなたのポジション：「現地の実行役」</h3>
           <p>本部（関東）がディレクションした戦略を、現地でリアルに動かすのがあなたの役割です。本部スタッフは月1〜2回、現地を直接訪問します。役場の担当者たちは「本気で町を変えたい」と思っている人たちが待っています。</p>
@@ -882,17 +887,23 @@
         <div class="salary-sub">手取り約 120,000円</div>
         <div class="salary-extras">
           <div class="salary-extra-item">
-            <div class="sei-icon">🏠</div>
+            <div class="sei-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <div class="sei-label">居住費</div>
             <div class="sei-note">全額会社負担</div>
           </div>
           <div class="salary-extra-item">
-            <div class="sei-icon">🚐</div>
+            <div class="sei-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M8 7h8m-8 5h8m-4 5h.01M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <div class="sei-label">公用車（軽バン）</div>
             <div class="sei-note">無償貸与</div>
           </div>
           <div class="salary-extra-item">
-            <div class="sei-icon">⛽</div>
+            <div class="sei-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <div class="sei-label">ガソリン代</div>
             <div class="sei-note">全額支給</div>
           </div>

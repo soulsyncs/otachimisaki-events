@@ -276,39 +276,57 @@
       font-size: 0.78rem;
     }
 
-    /* ── LIFE STRIP ── */
-    .life-strip {
-      background: linear-gradient(135deg, var(--ocean-dark), var(--ocean-mid));
-      padding: 48px clamp(24px, 6vw, 80px);
-      display: flex;
-      justify-content: center;
-      gap: 0;
+    /* ── PHOTO STRIP ── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 340px;
       overflow: hidden;
     }
-    .life-strip-items {
-      display: flex;
-      gap: 0;
-      max-width: 1000px;
-      width: 100%;
+    .ps-card {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      transition: flex 0.5s ease;
     }
-    .ls-item {
-      flex: 1;
-      text-align: center;
-      padding: 24px 20px;
-      border-right: 1px solid rgba(255,255,255,0.15);
+    .ps-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.25) 55%, transparent 100%);
+      transition: background 0.4s;
     }
-    .ls-item:last-child { border-right: none; }
-    .ls-item .ls-icon { font-size: 2rem; margin-bottom: 10px; }
-    .ls-item .ls-title {
-      font-size: 0.82rem;
+    .ps-card:hover::after {
+      background: linear-gradient(to top, rgba(10,22,40,0.9) 0%, rgba(10,22,40,0.4) 60%, rgba(10,22,40,0.1) 100%);
+    }
+    .ps-inner {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 22px;
+      z-index: 2;
+    }
+    .ps-en {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ps-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--sand-dark);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
-    .ls-item .ls-desc {
-      font-size: 0.74rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.7;
+    .ps-desc {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
     }
 
     /* ── JOB SECTION ── */
@@ -345,16 +363,40 @@
       gap: 20px;
     }
     .job-card {
-      background: var(--gray-light);
+      background: var(--white);
       border-radius: 20px;
-      padding: 28px 24px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .job-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,119,182,0.1);
+      box-shadow: 0 16px 40px rgba(0,119,182,0.12);
     }
-    .job-card .jc-emoji { font-size: 2rem; margin-bottom: 14px; }
+    .job-card .jc-photo {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .job-card .jc-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.55) 0%, transparent 60%);
+    }
+    .job-card .jc-photo-label {
+      position: absolute;
+      bottom: 12px;
+      left: 16px;
+      z-index: 2;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .job-card .jc-body { padding: 22px 22px 24px; }
     .job-card h3 {
       font-size: 1rem;
       font-weight: 700;
@@ -427,12 +469,16 @@
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--sky-pale), var(--sky));
+      background: linear-gradient(135deg, var(--ocean-dark), var(--ocean-mid));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 0.82rem;
+      font-weight: 900;
+      font-family: 'Noto Serif JP', serif;
+      color: white;
       flex-shrink: 0;
+      letter-spacing: 0;
     }
     .who-card .wc-text {
       font-size: 0.95rem;
@@ -539,7 +585,8 @@
       align-items: center;
       gap: 14px;
     }
-    .sv-perk .sp-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .sv-perk .sp-icon-svg { flex-shrink: 0; opacity: 0.8; }
+    .sv-perk .sp-icon-svg svg { stroke: var(--sand-dark); }
     .sv-perk .sp-info .sp-name {
       font-size: 0.85rem;
       font-weight: 600;
@@ -711,9 +758,7 @@
       .morning-scenes { order: -1; grid-template-columns: 1fr 1fr; }
       .job-grid { grid-template-columns: 1fr; }
       .salary-visual { grid-template-columns: 1fr; }
-      .life-strip-items { flex-wrap: wrap; }
-      .ls-item { min-width: 45%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
-      .ls-item:last-child { border-bottom: none; }
+      .photo-strip { grid-template-columns: repeat(2, 1fr); height: 480px; }
       .freedom-box { flex-direction: column; text-align: center; }
       footer { flex-direction: column; align-items: flex-start; }
     }
@@ -721,6 +766,8 @@
     @media (max-width: 480px) {
       .morning-scenes { grid-template-columns: 1fr; }
       .scene-card:first-child { aspect-ratio: 4/3; }
+      .photo-strip { grid-template-columns: 1fr; height: auto; }
+      .ps-card { height: 200px; }
     }
   </style>
 </head>
@@ -791,28 +838,34 @@
     </div>
   </section>
 
-  <!-- ===================== LIFE STRIP ===================== -->
-  <div class="life-strip">
-    <div class="life-strip-items">
-      <div class="ls-item reveal">
-        <div class="ls-icon">🌊</div>
-        <div class="ls-title">不知火海を一望</div>
-        <div class="ls-desc">毎日が絶景。都市では<br />味わえない暮らし。</div>
+  <!-- ===================== PHOTO STRIP ===================== -->
+  <div class="photo-strip">
+    <div class="ps-card" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=85')">
+      <div class="ps-inner">
+        <div class="ps-en">THE SEA</div>
+        <div class="ps-title">不知火海を一望</div>
+        <div class="ps-desc">毎日が絶景。都市では味わえない暮らし。</div>
       </div>
-      <div class="ls-item reveal" style="transition-delay: 0.1s">
-        <div class="ls-icon">♨️</div>
-        <div class="ls-title">温泉が歩いて行ける</div>
-        <div class="ls-desc">源泉かけ流し温泉が<br />日常になる。</div>
+    </div>
+    <div class="ps-card" style="background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=85')">
+      <div class="ps-inner">
+        <div class="ps-en">ONSEN</div>
+        <div class="ps-title">温泉が歩いて行ける</div>
+        <div class="ps-desc">源泉かけ流し温泉が日常になる。</div>
       </div>
-      <div class="ls-item reveal" style="transition-delay: 0.2s">
-        <div class="ls-icon">🏕</div>
-        <div class="ls-title">キャンプ場が職場</div>
-        <div class="ls-desc">海を見ながら仕事する<br />贅沢な環境。</div>
+    </div>
+    <div class="ps-card" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=85')">
+      <div class="ps-inner">
+        <div class="ps-en">CAMPING</div>
+        <div class="ps-title">キャンプ場が職場</div>
+        <div class="ps-desc">海を見ながら仕事する贅沢な環境。</div>
       </div>
-      <div class="ls-item reveal" style="transition-delay: 0.3s">
-        <div class="ls-icon">🍊</div>
-        <div class="ls-title">芦北のみかん・海産物</div>
-        <div class="ls-desc">地元産の新鮮な食が<br />毎日の食卓に並ぶ。</div>
+    </div>
+    <div class="ps-card" style="background-image: url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&q=85')">
+      <div class="ps-inner">
+        <div class="ps-en">LOCAL FOOD</div>
+        <div class="ps-title">芦北の旬が食卓に</div>
+        <div class="ps-desc">地元産の新鮮な海産物・農産物が毎日並ぶ。</div>
       </div>
     </div>
   </div>
@@ -830,29 +883,47 @@
 
       <div class="job-grid">
         <div class="job-card reveal" style="transition-delay: 0.1s">
-          <div class="jc-emoji">📸</div>
-          <h3>SNSで町の魅力を発信する</h3>
-          <p>写真・動画・テキスト。芦北の四季、海、温泉、人を、あなたの感性で切り取って世界に届ける。経験不問、やってみたい気持ちが大事。</p>
+          <div class="jc-photo" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=700&q=85')">
+            <div class="jc-photo-label">SNS CONTENT</div>
+          </div>
+          <div class="jc-body">
+            <h3>SNSで町の魅力を発信する</h3>
+            <p>写真・動画・テキスト。芦北の四季、海、温泉、人を、あなたの感性で切り取って世界に届ける。経験不問、やってみたい気持ちが大事。</p>
+          </div>
         </div>
         <div class="job-card reveal" style="transition-delay: 0.2s">
-          <div class="jc-emoji">🎪</div>
-          <h3>毎月のイベントを企画・運営する</h3>
-          <p>月1回のイベントを企画して現地で形にする。役場・キャンプ場・道の駅のスタッフと一緒に、町の賑わいを作っていく仕事。</p>
+          <div class="jc-photo" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=85')">
+            <div class="jc-photo-label">EVENT PLANNING</div>
+          </div>
+          <div class="jc-body">
+            <h3>毎月のイベントを企画・運営する</h3>
+            <p>月1回のイベントを企画して現地で形にする。役場・キャンプ場・道の駅のスタッフと一緒に、町の賑わいを作っていく仕事。</p>
+          </div>
         </div>
         <div class="job-card reveal" style="transition-delay: 0.3s">
-          <div class="jc-emoji">🤝</div>
-          <h3>地元の人たちと顔なじみになる</h3>
-          <p>役場の担当者、地元のお店、観光施設のスタッフ。毎日顔を合わせながら「この人と一緒にやりたい」という関係を作っていく。</p>
+          <div class="jc-photo" style="background-image: url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=700&q=85')">
+            <div class="jc-photo-label">COMMUNITY</div>
+          </div>
+          <div class="jc-body">
+            <h3>地元の人たちと顔なじみになる</h3>
+            <p>役場の担当者、地元のお店、観光施設のスタッフ。毎日顔を合わせながら「この人と一緒にやりたい」という関係を作っていく。</p>
+          </div>
         </div>
         <div class="job-card reveal" style="transition-delay: 0.4s">
-          <div class="jc-emoji">💡</div>
-          <h3>観光客が来る仕組みを本部と一緒に考える</h3>
-          <p>本部（関東）とオンラインMTGで戦略を共有し、現地で実行。月1〜2回は本部スタッフが現地を訪問して一緒に動く機会もあります。</p>
+          <div class="jc-photo" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=700&q=85')">
+            <div class="jc-photo-label">STRATEGY</div>
+          </div>
+          <div class="jc-body">
+            <h3>観光客が来る仕組みを本部と一緒に考える</h3>
+            <p>本部（関東）とオンラインMTGで戦略を共有し、現地で実行。月1〜2回は本部スタッフが現地を訪問して一緒に動く機会もあります。</p>
+          </div>
         </div>
       </div>
 
       <div class="freedom-box reveal">
-        <div class="fb-icon">🗺</div>
+        <div style="flex-shrink:0;width:88px;height:88px;border-radius:12px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=200&q=80" alt="芦北の海" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+        </div>
         <div>
           <h3>「時間の縛り」はありません</h3>
           <p>「何時から何時まで出勤」という固定時間はありません。この町を自分のフィールドにして、自分のペースで動いてください。地元の人たちと信頼関係を作り、現地でしか気づけないことを拾い上げていく。それがあなたの仕事です。</p>
@@ -869,23 +940,23 @@
 
       <div class="who-cards">
         <div class="who-card reveal" style="transition-delay: 0.05s">
-          <div class="wc-icon">✈️</div>
+          <div class="wc-icon">01</div>
           <div class="wc-text">旅が好き、移住・地方暮らしに興味がある</div>
         </div>
         <div class="who-card reveal" style="transition-delay: 0.1s">
-          <div class="wc-icon">📱</div>
+          <div class="wc-icon">02</div>
           <div class="wc-text">SNSを使った発信が得意、またはやってみたい</div>
         </div>
         <div class="who-card reveal" style="transition-delay: 0.15s">
-          <div class="wc-icon">😊</div>
+          <div class="wc-icon">03</div>
           <div class="wc-text">人と話すのが好き、初対面でもすぐ打ち解けられる</div>
         </div>
         <div class="who-card reveal" style="transition-delay: 0.2s">
-          <div class="wc-icon">🧭</div>
+          <div class="wc-icon">04</div>
           <div class="wc-text">自分で考えて動けるが、チームの方針に沿って動くことも得意</div>
         </div>
         <div class="who-card reveal" style="transition-delay: 0.25s">
-          <div class="wc-icon">🌱</div>
+          <div class="wc-icon">05</div>
           <div class="wc-text">「給料より経験・ライフスタイル」で選べる（20〜30代歓迎）</div>
         </div>
       </div>
@@ -918,21 +989,27 @@
         </div>
         <div class="sv-perks">
           <div class="sv-perk">
-            <div class="sp-icon">🏠</div>
+            <div class="sp-icon-svg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="26" height="26"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <div class="sp-info">
               <div class="sp-name">居住費</div>
               <div class="sp-val">全額会社負担（60,000円相当）</div>
             </div>
           </div>
           <div class="sv-perk">
-            <div class="sp-icon">🚐</div>
+            <div class="sp-icon-svg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="26" height="26"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <div class="sp-info">
               <div class="sp-name">公用車（軽バン）</div>
               <div class="sp-val">無償貸与</div>
             </div>
           </div>
           <div class="sv-perk">
-            <div class="sp-icon">⛽</div>
+            <div class="sp-icon-svg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="26" height="26"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <div class="sp-info">
               <div class="sp-name">ガソリン代</div>
               <div class="sp-val">全額支給</div>
