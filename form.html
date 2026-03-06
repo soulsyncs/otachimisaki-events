@@ -40,7 +40,7 @@
     .form-header {
       background:
         linear-gradient(to bottom, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.92) 100%),
-        url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1400&q=85') center / cover no-repeat;
+        url('images/yatsushiro-sea.jpg') center / cover no-repeat;
       padding: clamp(40px, 8vw, 80px) clamp(24px, 6vw, 80px) clamp(50px, 8vw, 80px);
       text-align: center;
     }
@@ -541,11 +541,75 @@
 
     /* ── MOBILE ── */
     @media (max-width: 640px) {
-      .form-section { padding: 24px 20px; border-radius: 14px; }
-      .field-row { grid-template-columns: 1fr; }
-      .confirm-table th { width: 110px; min-width: 100px; font-size: 0.73rem; }
-      .form-nav { flex-direction: column-reverse; }
-      .btn-next, .btn-submit, .btn-back { width: 100%; justify-content: center; }
+      /* ヘッダー */
+      .form-header { padding: 36px 20px 44px; }
+      .form-header h1 { font-size: 1.55rem; }
+      .form-header p { font-size: 0.84rem; }
+
+      /* ステップバー — 数字だけ表示してコンパクトに */
+      .step-bar { padding: 0 16px; }
+      .step-bar-inner { padding: 12px 0; gap: 0; }
+      .step-item { padding: 0 6px; gap: 4px; }
+      .step-label { font-size: 0.62rem; }
+      .step-dot { width: 24px; height: 24px; font-size: 0.68rem; }
+      .step-arrow { font-size: 0.65rem; margin: 0 2px; }
+
+      /* フォームラッパー */
+      .form-wrap { padding: 20px 16px 40px; }
+
+      /* フォームカード */
+      .form-section { padding: 24px 18px; border-radius: 16px; margin-bottom: 16px; }
+      .fs-header { margin-bottom: 22px; padding-bottom: 16px; }
+      .fs-header h2 { font-size: 1.1rem; }
+
+      /* フィールド */
+      .field-row { grid-template-columns: 1fr; gap: 12px; }
+      .field-group { margin-bottom: 20px; }
+      label { font-size: 0.83rem; margin-bottom: 7px; }
+
+      /* 入力フィールド — タップしやすい高さ */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      select { padding: 13px 15px; font-size: 1rem; border-radius: 10px; }
+      textarea { font-size: 1rem; min-height: 120px; }
+
+      /* ラジオ・チェックボックス — タップエリアを大きく */
+      .radio-item, .check-item {
+        padding: 14px 14px;
+        border-radius: 12px;
+        gap: 12px;
+      }
+      .radio-text, .check-text { font-size: 0.92rem; }
+      .radio-mark, .check-mark { width: 22px; height: 22px; flex-shrink: 0; }
+
+      /* 確認ページ */
+      .confirm-table th { width: 100px; min-width: 90px; font-size: 0.72rem; padding: 12px 12px 12px 0; }
+      .confirm-table td { font-size: 0.84rem; padding: 12px 0; }
+
+      /* ナビゲーションボタン */
+      .form-nav {
+        flex-direction: column-reverse;
+        gap: 12px;
+        margin-top: 24px;
+        padding-top: 20px;
+      }
+      .btn-next, .btn-submit, .btn-back {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 20px;
+        font-size: 1rem;
+        border-radius: 14px;
+      }
+      .btn-submit { padding: 16px 20px; font-size: 1.05rem; }
+
+      /* 完了ページ */
+      #section-success h2 { font-size: 1.35rem; }
+      .back-to-top { width: 100%; justify-content: center; font-size: 1rem; padding: 15px; }
+
+      /* プライバシーポリシー */
+      .privacy-box { font-size: 0.8rem; padding: 16px; max-height: 130px; }
     }
   </style>
 </head>
@@ -1135,7 +1199,7 @@
 
       try {
         // Send to backend handler
-        const response = await fetch('form-handler.php', {
+        const response = await fetch('https://api-function-vert.vercel.app/api/apply', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...formData, chatwork_message: message })
@@ -1209,7 +1273,7 @@ ${formData.free_note || 'なし'}
       const a = document.createElement('a');
       a.href = mailtoLink;
       a.click();
-      alert('フォームハンドラーが設定されていないため、メールクライアントを開きます。\n設定後は自動でChatworkに届きます。');
+      alert('送信中にエラーが発生しました。お手数ですが、画面の内容をメールでお送りください。');
     }
   </script>
 </body>
